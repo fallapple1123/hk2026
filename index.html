@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2026 香港馬年冒險繪本</title>
+    <link href="https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FFF9F2;
+            --p-pink: #FFD1D1;
+            --a-blue: #D1E9FF;
+            --text: #5D4037;
+            --line: 2px solid #5D4037;
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: 'Zen Maru Gothic', sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 15px; }
+        h1, h2, h3 { font-family: 'Zhi Mang Xing', cursive; text-align: center; margin: 10px 0; }
+
+        /* 卡片設計 */
+        .card {
+            background: white; border: var(--line); border-radius: 25px 15px 30px 20px / 15px 30px 20px 25px;
+            padding: 15px; margin-bottom: 20px; box-shadow: 4px 4px 0px rgba(93, 64, 55, 0.1);
+        }
+
+        /* 分頁 */
+        .tabs { display: flex; gap: 8px; margin-bottom: 15px; overflow-x: auto; }
+        .tab { flex: 1; padding: 10px; border: var(--line); border-radius: 15px; text-align: center; background: var(--a-blue); cursor: pointer; font-weight: bold; min-width: 65px; }
+        .tab.active { background: var(--p-pink); }
+
+        /* 行程時間軸 */
+        .timeline-item { border-left: 2px dashed var(--text); padding-left: 20px; position: relative; margin-bottom: 15px; }
+        .timeline-item::before { content: '🐎'; position: absolute; left: -14px; top: 0; background: var(--bg); font-size: 18px; }
+        .time { font-size: 0.85em; color: #888; display: block; }
+        .item-title { font-weight: bold; color: #D32F2F; }
+
+        /* 今日模式 */
+        .today-banner { background: #FFF0F0; border: 2px dashed #FF8A80; text-align: center; padding: 10px; border-radius: 15px; margin-bottom: 15px; font-weight: bold; }
+        .hidden { display: none; }
+
+        /* 按鈕 */
+        .btn { display: block; width: 100%; padding: 10px; margin-top: 8px; background: var(--p-pink); border: var(--line); border-radius: 12px; text-align: center; text-decoration: none; color: inherit; font-weight: bold; cursor: pointer; }
+        .btn-blue { background: var(--a-blue); margin-top: 5px; font-size: 0.8em; width: auto; display: inline-block; padding: 5px 10px; }
+
+        /* 集章區 */
+        .stamp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .stamp { aspect-ratio: 1; border: 2px dashed #CCC; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; filter: grayscale(1); transition: 0.5s; background: #f9f9f9; }
+        .stamp.got { filter: grayscale(0); border: 2px solid var(--p-pink); background: #FFF0F0; transform: rotate(8deg); }
+
+        /* 記帳 */
+        .input-box { width: 100%; padding: 10px; border: 1px solid var(--text); border-radius: 10px; margin-bottom: 8px; font-family: inherit; }
+        .expense-row { display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding: 5px 0; font-size: 0.9em; }
+        .tag { display: inline-block; background: #E1F5FE; padding: 3px 8px; border-radius: 10px; font-size: 0.75em; margin-top: 5px; border: 1px solid #01579B; margin-right: 5px; }
+    </style>
+</head>
+<body>
+
+    <h1>🐎 2026 香港冒險手帳</h1>
+
+    <div class="card" style="text-align: center;">
+        <label>✨ 今日模式：<input type="checkbox" id="modeSwitch" onchange="toggleToday()"></label>
+        <div id="todayUI" class="hidden">
+            <div class="today-banner">
+                ⏳ 距離下一站：<span id="nextStop">迪士尼樂園</span><br>
+                <small id="timerDisplay">倒數計算中...</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="tabs">
+        <div class="tab active" onclick="setDay(1)">D1</div>
+        <div class="tab" onclick="setDay(2)">D2</div>
+        <div class="tab" onclick="setDay(3)">D3</div>
+        <div class="tab" onclick="setDay(4)">D4</div>
+    </div>
+
+    <div id="itinerary">
+        <div id="day1" class="day-section">
+            <div class="timeline-item card">
+                <span class="time">09:00 - 10:30</span>
+                <span class="item-title">抵達香港 & 好萊塢酒店</span>
+                <p>專車接送至酒店寄行李，直接前往樂園！</p>
+                <div class="tag">🍴 晶荷軒 (迪士尼造型點心)</div>
+                <button class="btn" onclick="addStamp(0)">🎨 蓋上抵達章</button>
+            </div>
+            <div class="timeline-item card">
+                <span class="time">11:00 - 20:00</span>
+                <span class="item-title">迪士尼樂園 Day 1</span>
+                <p>2/19 第一天入園，衝刺熱門設施。</p>
+                <a class="btn" href="https://www.google.com/maps/search/Disneyland+Hong+Kong+Restaurant" target="_blank">📍 找樂園餐廳</a>
+            </div>
+        </div>
+
+        <div id="day2" class="day-section hidden">
+            <div class="timeline-item card">
+                <span class="time">10:00 - 15:00</span>
+                <span class="item-title">迪士尼樂園 Day 2</span>
+                <p>補齊沒玩到的項目。推薦：玩轉木馬。</p>
+                <button class="btn" onclick="addStamp(1)">🎠 馬年旋轉木馬章</button>
+            </div>
+            <div class="timeline-item card">
+                <span class="time">15:30 - 17:00</span>
+                <span class="item-title">Check-in 金域假日酒店</span>
+                <p>從迪士尼移動至尖沙咀。稍作休息。</p>
+            </div>
+            <div class="timeline-item card">
+                <span class="time">18:00 - 21:00</span>
+                <span class="item-title">太平山頂夜景</span>
+                <p>搭纜車俯瞰夜景。推薦晚餐：山頂廣場美食。</p>
+                <button class="btn" onclick="addStamp(2)">🚠 太平山纜車章</button>
+            </div>
+        </div>
+
+        <div id="day3" class="day-section hidden">
+            <div class="timeline-item card">
+                <span class="time">10:00 - 18:00</span>
+                <span class="item-title">海洋公園冒險</span>
+                <p>全日海洋冒險。推薦：搭大纜車、看企鵝。</p>
+                <div class="tag">🍴 海龍王餐廳</div>
+                <button class="btn" onclick="addStamp(3)">🐬 海洋冒險章</button>
+            </div>
+            <div class="timeline-item card">
+                <span class="time">19:30</span>
+                <span class="item-title">尖沙咀美食 & 散步</span>
+                <p>金域假日周邊晚餐。推薦：為食恐龍。</p>
+                <button class="btn" onclick="addStamp(4)">🏙️ 尖沙咀章</button>
+            </div>
+        </div>
+
+        <div id="day4" class="day-section hidden">
+            <div class="timeline-item card">
+                <span class="time">09:00 - 10:30</span>
+                <span class="item-title">伴手禮補貨時間</span>
+                <p>珍妮曲奇(小熊)、曲奇四重奏、海港城。</p>
+                <div class="tag">🛍️ 必買：蝴蝶酥</div>
+                <button class="btn" onclick="addStamp(5)">🍪 伴手禮章</button>
+            </div>
+            <div class="timeline-item card">
+                <span class="time">11:00 - 13:30</span>
+                <span class="item-title">前往機場 & 歸途</span>
+                <p>搭機 BR868 13:30-15:20。機場 Disney Store 做最後衝刺。</p>
+                <button class="btn" onclick="addStamp(6)">✈️ 冒險滿載章</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>📜 2026 馬年集章冊</h3>
+        <div class="stamp-grid" id="stampBox">
+            <div class="stamp">🏰</div><div class="stamp">🎠</div><div class="stamp">🚠</div><div class="stamp">🐬</div>
+            <div class="stamp">🏙️</div><div class="stamp">🍪</div><div class="stamp">✈️</div><div class="stamp">🌟</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>💰 冒險錢包 (1 HKD = 4 TWD)</h3>
+        <input type="text" id="expNote" class="input-box" placeholder="項目：如蝴蝶酥">
+        <input type="number" id="expAmt" class="input-box" placeholder="港幣金額">
+        <button class="btn" onclick="saveExp()">📝 存入帳單</button>
+        
+        <div id="expList" style="margin-top: 15px; max-height: 150px; overflow-y: auto;"></div>
+        <div style="text-align: right; font-weight: bold; padding-top: 10px; border-top: 1px dashed #ccc;">
+            總花費：<span id="totalTwd" style="color: #D32F2F;">0</span> TWD
+        </div>
+        <button class="btn" style="background: #E8F5E9;" onclick="exportCSV()">📤 匯出 CSV 報表</button>
+    </div>
+
+    <script>
+        // 切換天數
+        function setDay(d) {
+            document.querySelectorAll('.day-section').forEach((s, i) => s.classList.toggle('hidden', i+1 !== d));
+            document.querySelectorAll('.tab').forEach((t, i) => t.classList.toggle('active', i+1 === d));
+        }
+
+        // 今日模式
+        function toggleToday() {
+            const isToday = document.getElementById('modeSwitch').checked;
+            document.getElementById('todayUI').classList.toggle('hidden', !isToday);
+            if(isToday) startTimer();
+        }
+
+        function startTimer() {
+            // 模擬計時器
+            document.getElementById('timerDisplay').innerText = "倒數：1小時20分15秒";
+        }
+
+        // 集章邏輯
+        let stamps = JSON.parse(localStorage.getItem('hk_stamps')) || [];
+        function updateStamps() {
+            const items = document.querySelectorAll('.stamp');
+            stamps.forEach(idx => items[idx].classList.add('got'));
+        }
+        function addStamp(idx) {
+            if(!stamps.includes(idx)) {
+                stamps.push(idx);
+                localStorage.setItem('hk_stamps', JSON.stringify(stamps));
+                updateStamps();
+                alert("咚！蓋章成功！🐎");
+            }
+        }
+
+        // 記帳邏輯
+        let expData = JSON.parse(localStorage.getItem('hk_exp')) || [];
+        function showExp() {
+            const list = document.getElementById('expList');
+            const total = document.getElementById('totalTwd');
+            list.innerHTML = '';
+            let sum = 0;
+            expData.forEach((e, i) => {
+                sum += e.amt * 4;
+                list.innerHTML += `<div class="expense-row"><span>${e.note}</span><span>$${e.amt} (NT${e.amt*4})</span></div>`;
+            });
+            total.innerText = sum.toLocaleString();
+        }
+        function saveExp() {
+            const note = document.getElementById('expNote').value;
+            const amt = document.getElementById('expAmt').value;
+            if(note && amt) {
+                expData.push({note, amt: parseFloat(amt)});
+                localStorage.setItem('hk_exp', JSON.stringify(expData));
+                document.getElementById('expNote').value = '';
+                document.getElementById('expAmt').value = '';
+                showExp();
+            }
+        }
+        function exportCSV() {
+            let csv = "項目,港幣,台幣\n";
+            expData.forEach(e => csv += `${e.note},${e.amt},${e.amt*4}\n`);
+            const blob = new Blob(["\ufeff" + csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url; a.download = "2026香港之旅.csv"; a.click();
+        }
+
+        // 初始載入
+        updateStamps();
+        showExp();
+    </script>
+</body>
+</html>
