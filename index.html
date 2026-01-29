@@ -82,7 +82,7 @@
                 <span class="item-title">抵達香港 & 好萊塢酒店</span>
                 <p>專車接送至酒店寄行李，直接前往樂園！</p>
                 <div class="tag">🍴 晶荷軒 (迪士尼造型點心)</div>
-                <button class="btn" onclick="addStamp(0)">🎨 蓋上抵達章</button>
+                <button class="btn" onclick="addStamp(0)"><img src="fantasy castle.png" width="40"> 蓋上抵達章</button>
             </div>
             <div class="timeline-item card">
                 <span class="time">11:00 - 20:00</span>
@@ -97,7 +97,7 @@
                 <span class="time">10:00 - 15:00</span>
                 <span class="item-title">迪士尼樂園 Day 2</span>
                 <p>補齊沒玩到的項目。推薦：玩轉木馬。</p>
-                <button class="btn" onclick="addStamp(1)">🎠 馬年旋轉木馬章</button>
+                <button class="btn" onclick="addStamp(1)"><img src="horse.png" width="40"> 馬年旋轉木馬章</button>
             </div>
             <div class="timeline-item card">
                 <span class="time">15:30 - 17:00</span>
@@ -108,7 +108,7 @@
                 <span class="time">18:00 - 21:00</span>
                 <span class="item-title">太平山頂夜景</span>
                 <p>搭纜車俯瞰夜景。推薦晚餐：山頂廣場美食。</p>
-                <button class="btn" onclick="addStamp(2)">🚠 太平山纜車章</button>
+                <button class="btn" onclick="addStamp(2)"><img src="cable car.png" width="40"> 太平山纜車章</button>
             </div>
         </div>
 
@@ -118,13 +118,13 @@
                 <span class="item-title">海洋公園冒險</span>
                 <p>全日海洋冒險。推薦：搭大纜車、看企鵝。</p>
                 <div class="tag">🍴 海龍王餐廳</div>
-                <button class="btn" onclick="addStamp(3)">🐬 海洋冒險章</button>
+                <button class="btn" onclick="addStamp(3)"><img src="ocean park.png" width="40"> 海洋冒險章</button>
             </div>
             <div class="timeline-item card">
                 <span class="time">19:30</span>
                 <span class="item-title">尖沙咀美食 & 散步</span>
                 <p>金域假日周邊晚餐。推薦：為食恐龍。</p>
-                <button class="btn" onclick="addStamp(4)">🏙️ 尖沙咀章</button>
+                <button class="btn" onclick="addStamp(4)"><img src="shopping.png" width="40"> 尖沙咀章</button>
             </div>
         </div>
 
@@ -134,13 +134,13 @@
                 <span class="item-title">伴手禮補貨時間</span>
                 <p>珍妮曲奇(小熊)、曲奇四重奏、海港城。</p>
                 <div class="tag">🛍️ 必買：蝴蝶酥</div>
-                <button class="btn" onclick="addStamp(5)">🍪 伴手禮章</button>
+                <button class="btn" onclick="addStamp(5)"><img src="cookie.png" width="40"> 伴手禮章</button>
             </div>
             <div class="timeline-item card">
                 <span class="time">11:00 - 13:30</span>
                 <span class="item-title">前往機場 & 歸途</span>
                 <p>搭機 BR868 13:30-15:20。機場 Disney Store 做最後衝刺。</p>
-                <button class="btn" onclick="addStamp(6)">✈️ 冒險滿載章</button>
+                <button class="btn" onclick="addStamp(6)"><img src="airplane.png" width="40"> 冒險滿載章</button>
             </div>
         </div>
     </div>
@@ -148,8 +148,8 @@
     <div class="card">
         <h3>📜 2026 馬年集章冊</h3>
         <div class="stamp-grid" id="stampBox">
-            <div class="stamp">🏰</div><div class="stamp">🎠</div><div class="stamp">🚠</div><div class="stamp">🐬</div>
-            <div class="stamp">🏙️</div><div class="stamp">🍪</div><div class="stamp">✈️</div><div class="stamp">🌟</div>
+            <div class="stamp"><img src="fantasy castle.png" style="width: 45px; height: 45px;"></div><div class="stamp"><img src="house.png" style="width: 45px; height: 45px;"></div><div class="stamp"><img src="cable car.png" style="width: 45px; height: 45px;"></div><div class="stamp"><img src="ocean park.png" style="width: 45px; height: 45px;"></div>
+            <div class="stamp"><img src="cookie.png" style="width: 45px; height: 45px;"></div><div class="stamp"><img src="shopping.png" style="width: 45px; height: 45px;"></div><div class="stamp"><img src="airplane.png" style="width: 45px; height: 45px;"></div><div class="stamp"><div class="stamp"><img src="hidden_master.png" style="width: 45px; height: 45px;"></div></div>
         </div>
     </div>
 
@@ -189,15 +189,16 @@
         let stamps = JSON.parse(localStorage.getItem('hk_stamps')) || [];
         function updateStamps() {
             const items = document.querySelectorAll('.stamp');
-            stamps.forEach(idx => items[idx].classList.add('got'));
-        }
-        function addStamp(idx) {
-            if(!stamps.includes(idx)) {
-                stamps.push(idx);
-                localStorage.setItem('hk_stamps', JSON.stringify(stamps));
-                updateStamps();
-                alert("咚！蓋章成功！🐎");
-            }
+    stamps.forEach(idx => items[idx].classList.add('got'));
+
+    // 🌟 隱藏圖章邏輯：如果前 7 個都集齊了
+    if (stamps.length >= 7 && !stamps.includes(7)) {
+        setTimeout(() => {
+            alert("🎊 太棒了！隱藏任務達成！解鎖『2026 馬年大冒險家』勳章！");
+            addStamp(7); // 自動蓋上最後一個隱藏章
+        }, 1000);
+    }
+}
         }
 
         // 記帳邏輯
