@@ -29,26 +29,25 @@
         .flight-card { background: #FFFDE7; border: 2px dashed var(--disney-blue); padding: 15px; border-radius: 20px; margin-bottom: 20px; font-size: 0.9em; }
         .flight-row { display: flex; justify-content: space-between; align-items: center; }
 
-        /* 導航分頁 */
         .tabs { display: flex; gap: 6px; margin-bottom: 15px; overflow-x: auto; padding: 5px; scrollbar-width: none; }
-        .tabs::-webkit-scrollbar { display: none; }
         .tab { flex-shrink: 0; padding: 12px 18px; border: var(--line); border-radius: 50px; text-align: center; background: white; cursor: pointer; font-weight: 700; color: var(--disney-blue); font-size: 0.95em; }
         .tab.active { background: var(--disney-gold); transform: scale(1.05); }
 
-        /* 行程描述樣式 */
         .tour-day { background: var(--disney-blue); color: white; padding: 3px 10px; border-radius: 5px; font-size: 0.8em; margin-bottom: 8px; display: inline-block; }
         .time-tag { background: #E91E63; color: white; padding: 2px 8px; border-radius: 5px; font-size: 0.85em; font-weight: 700; margin-right: 8px; }
-        .taxi-tag { background: #D32F2F; color: white; padding: 2px 8px; border-radius: 5px; font-size: 0.8em; font-weight: 700; margin-top: 5px; display: inline-block; }
-        .fare-info { color: #D32F2F; font-weight: 700; font-size: 0.9em; margin-top: 5px; }
+        .map-btn { display: inline-flex; align-items: center; background: #E3F2FD; color: #004B8D; padding: 4px 10px; border-radius: 50px; font-size: 0.8em; font-weight: 700; text-decoration: none; border: 1px solid #004B8D; margin-top: 8px; }
+        .time-badge { background: #FEEBEE; color: #D32F2F; padding: 2px 8px; border-radius: 5px; font-size: 0.75em; font-weight: 700; margin-left: 5px; border: 1px solid #FFCDD2; }
 
         .timeline-item { border-left: 3px dotted var(--disney-blue); padding-left: 20px; position: relative; margin-bottom: 20px; }
         .timeline-item::before { content: '🌟'; position: absolute; left: -14px; top: 0; font-size: 18px; }
         .item-title { font-weight: 700; color: var(--disney-blue); font-size: 1.05em; display: block; margin-bottom: 8px; }
 
+        /* 攻略與美食樣式 */
         .info-box { background: #E3F2FD; border: 1px solid var(--disney-blue); border-radius: 12px; padding: 12px; margin-top: 8px; font-size: 0.85em; line-height: 1.6; }
-        .dinner-box { background: #FFF3E0; border: 2px solid #FF9800; border-radius: 12px; padding: 12px; margin-top: 10px; }
+        .food-box { background: #FFF3E0; border: 1px solid #FF9800; border-radius: 12px; padding: 12px; margin-top: 8px; font-size: 0.85em; }
+        .info-title { font-weight: 700; color: var(--disney-blue); display: block; margin-bottom: 5px; }
+        .show-tag { background: #FFF; border: 1px solid #E91E63; color: #E91E63; padding: 2px 8px; border-radius: 5px; font-size: 0.8em; font-weight: 700; margin-right: 5px; }
 
-        /* 集章冊區域 */
         .stamp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
         .stamp { aspect-ratio: 1; border: 2.5px dashed #CCC; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #fdfdfd; overflow: hidden; filter: grayscale(1); }
         .stamp img { width: 85%; height: 85%; object-fit: contain; }
@@ -67,7 +66,7 @@
 </head>
 <body>
 
-    <h1>🏰 2026 夢幻之星<br>香港迪士尼・馬年尊榮冒險</h1>
+    <h1>🏰 2026 夢幻之星<br>香港迪士尼・馬年賀歲大冒險</h1>
 
     <div class="flight-card">
         <div class="flight-row">
@@ -87,76 +86,106 @@
 
     <div id="main-content">
         <div id="day1" class="tab-section">
-            <div class="tour-day">2/19 第一天：夢幻啟程</div>
+            <div class="tour-day">第一天：夢幻啟程</div>
             <div class="timeline-item card">
-                <span class="time-tag">09:00</span><span class="item-title">✈️ 抵港與好萊塢酒店</span>
-                <p>長榮 BR891 抵達，前往迪士尼好萊塢酒店寄放行李。</p>
-                <button class="btn" onclick="addStamp(0)">點我蓋章：抵達樂園</button>
+                <span class="time-tag">04:30</span><span class="item-title">🏠 出發：前往桃園機場</span>
+                <p>開啟 2026 馬年香港之旅，辦理登機手續。</p>
+            </div>
+            <div class="timeline-item card">
+                <span class="time-tag">09:00</span><span class="item-title">✈️ 抵港：迪士尼好萊塢酒店</span>
+                <p>專車送往酒店寄放行李。</p>
+                <a href="https://www.google.com/maps/dir/Hong+Kong+International+Airport,+1+Sky+Plaza+Road,+Chek+Lap+Kok,+Hong+Kong/Disney's+Hollywood+Hotel,+Hong+Kong+Disneyland+Resort,+Magic+Road,+Lantau+Island,+Hong+Kong/data=!4m14!4m13!1m5!1m1!19sChIJncZGzPPiAzQRnjaSGIKQ9fk!2m2!1d113.91372829999999!2d22.3134736!1m5!1m1!19sChIJ85WXXvLiAzQRjkXspFD_7ok!2m2!1d114.037334!2d22.309186999999998!3e0" class="map-btn" target="_blank">🗺️ 飯店導航</a><span class="time-badge">🚗 15min</span>
+                <div class="food-box">
+                    🍽 <strong>必吃推薦：</strong> 晶荷軒「迪士尼造型點心」。
+                </div>
+            </div>
+            <div class="timeline-item card">
+                <span class="item-title">🏰 迪士尼攻略 Day 1</span>
+                <div class="info-box">
+                    <span class="info-title">💡 探險家必勝攻略</span>
+                    • <strong>優先衝魔雪奇緣世界：</strong> 趁開園體力好搶先排隊。<br>
+                    <span class="show-tag">13:00</span> 米奇慶祝大遊行<br>
+                    <span class="show-tag">20:00</span> Momentous 煙火秀
+                </div>
+                <button class="btn" onclick="addStamp(0)">點我蓋章：抵達夢幻樂園</button>
             </div>
         </div>
 
         <div id="day2" class="tab-section hidden">
-            <div class="tour-day">2/20 第二天：尊榮的士之旅</div>
+            <div class="tour-day">第二天：尊榮提早入園</div>
             <div class="timeline-item card">
-                <span class="time-tag">08:00</span><span class="item-title">🍳 早餐：好萊塢酒店主廚餐廳</span>
-                <p>享用早餐後，準備今日的提早入園行程。</p>
+                <span class="time-tag">08:00</span><span class="item-title">🍳 早餐 & 樂園搶先衝</span>
+                <p>享用早餐後，使用「提早入園券」領先全球進入園區。</p>
+                <div class="info-box">
+                    ❄️ <strong>必玩：</strong> 魔雪奇緣之旅、雪嶺滑雪橇。<br>
+                    🎭 <strong>必看表演：</strong> 14:30 迪士尼魔法書房。
+                </div>
             </div>
             <div class="timeline-item card">
-                <span class="time-tag">15:00</span><span class="item-title">🚕 移動：前往金域假日酒店</span>
-                <p>離開迪士尼，搭乘紅色的士前往尖沙咀金域假日酒店。</p>
-                <span class="taxi-tag">🚕 Taxi 預估：HK$230</span>
-                <div class="fare-info">※ 包含大嶼山至市區隧道費</div>
+                <span class="time-tag">15:00</span><span class="item-title">🚕 移動：金域假日酒店入住</span>
+                <p>離開迪士尼，搭乘計程車前往尖沙咀。</p>
+                <span style="color:#D32F2F; font-size:0.85em; font-weight:bold;">🚕 預計車資：HK$230</span>
+                <a href="https://www.google.com/maps/dir/Disney's+Hollywood+Hotel,+Hong+Kong+Disneyland+Resort,+Magic+Road,+Lantau+Island,+Hong+Kong/Holiday+Inn+Golden+Mile+Hong+Kong+by+IHG,+50+Nathan+Road,+Tsim+Sha+Tsui,+Hong+Kong/data=!4m14!4m13!1m5!1m1!19sChIJ85WXXvLiAzQRjkXspFD_7ok!2m2!1d114.037334!2d22.309186999999998!1m5!1m1!19sChIJ8SgJDvIABDQRgA6YPZc8epg!2m2!1d114.1727739!2d22.2967855!3e0" class="map-btn" target="_blank">🗺️ 酒店導航</a>
             </div>
             <div class="timeline-item card">
-                <span class="time-tag">17:30</span><span class="item-title">🚠 絕景：太平山纜車夜景</span>
-                <p>從酒店門口搭乘的士前往中環山頂纜車總站。</p>
-                <span class="taxi-tag">🚕 Taxi 預估：HK$120</span>
-                <div class="fare-info">※ 包含紅磡海底隧道費</div>
+                <span class="time-tag">18:00</span><span class="item-title">🚠 太平山頂夜景之旅</span>
+                <p>搭乘的士前往中環纜車站。</p>
+                <span style="color:#D32F2F; font-size:0.85em; font-weight:bold;">🚕 預計車資：HK$120</span>
                 <button class="btn" onclick="addStamp(1)">點我蓋章：幸運木馬章</button>
             </div>
         </div>
 
         <div id="day3" class="tab-section hidden">
-            <div class="tour-day">2/21 第三天：海洋探險與美食</div>
+            <div class="tour-day">第三天：海洋探險與傳統晚宴</div>
             <div class="timeline-item card">
-                <span class="item-title">🐬 香港海洋公園大冒險</span>
-                <p>全日探訪海洋生物與動物表演。</p>
+                <span class="item-title">🐬 香港海洋公園全日大遊蹤</span>
+                <p>探訪大熊貓雙胞胎與海洋明星秀。</p>
+                <div class="info-box" style="background:#E1F5FE;">
+                    <span class="info-title">🐾 海洋公園推薦內容</span>
+                    • <strong>大熊貓之旅：</strong> 明星貓熊盈盈樂樂與龍鳳胎寶寶。<br>
+                    • <strong>表演秀：</strong> 14:00 海洋劇場「海豚探秘」。
+                </div>
+                <a href="https://www.google.com/maps/dir/Holiday+Inn+Golden+Mile+Hong+Kong+by+IHG,+50+Nathan+Road,+Tsim+Sha+Tsui,+Hong+Kong/Ocean+Park,+Aberdeen,+Hong+Kong/data=!4m14!4m13!1m5!1m1!19sChIJ8SgJDvIABDQRgA6YPZc8epg!2m2!1d114.1727739!2d22.2967855!1m5!1m1!19sChIJ4SEGMiQABDQRRhn7SYWq0fM!2m2!1d114.1757239!2d22.2466607!3e3" class="map-btn" target="_blank">🧭 導航去海洋公園</a><span class="time-badge">🚇 30min</span>
                 <button class="btn" onclick="addStamp(3)">點我蓋章：海洋小隊長章</button>
             </div>
-            <div class="timeline-item card dinner-box">
-                <span class="time-tag">18:30</span><span class="item-title">🥢 預約：蓮香樓 (尖沙咀店)</span>
-                <p><strong>預約人數：7 位</strong></p>
-                <p>品嚐道地港式點心與經典粵菜晚宴。</p>
+            <div class="timeline-item card" style="background:#FFF3E0; border-color:#FF9800;">
+                <span class="time-tag">18:30</span><span class="item-title">🥢 重要預約：蓮香樓 (尖沙咀)</span>
+                <p><strong>預約 7 位</strong>。品嚐道地懷舊港式晚宴。</p>
             </div>
         </div>
 
         <div id="day4" class="tab-section hidden">
-            <div class="tour-day">2/22 第四天：滿載平安歸</div>
+            <div class="tour-day">第四天：滿載回憶歸途</div>
             <div class="timeline-item card">
-                <span class="item-title">🛍️ 伴手禮補貨 & 歸途</span>
-                <p>搭乘 13:30 長榮 BR868 回台灣。</p>
+                <span class="item-title">🛍️ 伴手禮補貨 & 機場歸途</span>
+                <p>最後衝刺珍妮曲奇，前往機場搭乘 BR868。</p>
+                <div class="info-box">
+                    ✈️ <strong>13:30</strong> 起飛 / <strong>15:20</strong> 抵台。
+                </div>
                 <button class="btn" onclick="addStamp(6)">點我蓋章：冒險成功章</button>
+            </div>
+            <div class="timeline-item card">
+                <span class="time-tag">17:00</span><span class="item-title">🏠 回到溫暖的家</span>
+                <p>預計抵達家中，分享旅途驚喜。</p>
             </div>
         </div>
 
         <div id="day5" class="tab-section hidden">
             <div class="card" style="background: #E8F5E9; border-color: #2E7D32;">
                 <h3 style="color: #2E7D32; margin-top:0;">💰 冒險錢包 (1 HKD = 4 TWD)</h3>
-                <label>項目名稱</label>
-                <input type="text" id="expNote" class="input-box" placeholder="例如：計程車費">
-                <label>港幣金額 (HKD)</label>
-                <input type="number" id="expAmt" class="input-box" placeholder="0">
+                <input type="text" id="expNote" class="input-box" placeholder="買了什麼？">
+                <input type="number" id="expAmt" class="input-box" placeholder="港幣金額">
                 <button class="btn" style="background:#2E7D32; color:white; border:none;" onclick="saveExp()">📝 存入帳單</button>
                 <div id="expList" style="margin-top: 15px;"></div>
                 <div style="text-align: right; font-weight: bold; border-top: 2px solid #2E7D32; padding-top: 15px; margin-top: 15px;">
-                    總花費：<span id="totalTwd" style="color: #D32F2F; font-size: 1.2em;">0</span> TWD
+                    總花費：<span id="totalTwd" style="color: #D32F2F;">0</span> TWD
                 </div>
             </div>
         </div>
     </div>
 
     <div id="stamp-section" class="card">
-        <h3>📜 探險隊榮譽榜</h3>
+        <h3 style="margin-top:0;">📜 探險隊榮譽榜</h3>
         <div class="stamp-grid">
             <div class="stamp"><img src="fantasy castle.png"></div>
             <div class="stamp"><img src="horse.png"></div>
@@ -227,7 +256,7 @@
                 document.getElementById('expNote').value = '';
                 document.getElementById('expAmt').value = '';
                 showExp();
-                alert("已記錄車資/花費！");
+                alert("已記錄消費！");
             }
         }
         updateStamps(); showExp();
