@@ -30,7 +30,8 @@
         .flight-row { display: flex; justify-content: space-between; align-items: center; }
 
         /* 旅行社風格標籤 */
-        .tour-title { background: var(--disney-blue); color: white; padding: 3px 10px; border-radius: 5px; font-size: 0.8em; margin-bottom: 8px; display: inline-block; }
+        .tour-day { background: var(--disney-blue); color: white; padding: 3px 10px; border-radius: 5px; font-size: 0.8em; margin-bottom: 8px; display: inline-block; }
+        .time-tag { background: #E91E63; color: white; padding: 2px 8px; border-radius: 5px; font-size: 0.85em; font-weight: 700; margin-right: 8px; }
         .map-btn { display: inline-flex; align-items: center; background: #E3F2FD; color: #004B8D; padding: 5px 12px; border-radius: 50px; font-size: 0.85em; font-weight: 700; text-decoration: none; border: 1px solid #004B8D; margin-top: 10px; }
         .time-badge { background: #FEEBEE; color: #D32F2F; padding: 2px 8px; border-radius: 5px; font-size: 0.75em; font-weight: 700; margin-left: 5px; border: 1px solid #FFCDD2; }
 
@@ -38,11 +39,11 @@
         .tab { flex: 1; padding: 12px; border: var(--line); border-radius: 50px; text-align: center; background: white; cursor: pointer; font-weight: 700; color: var(--disney-blue); min-width: 80px; }
         .tab.active { background: var(--disney-gold); transform: scale(1.05); }
 
-        .timeline-item { border-left: 3px dotted var(--disney-blue); padding-left: 20px; position: relative; margin-bottom: 15px; }
+        .timeline-item { border-left: 3px dotted var(--disney-blue); padding-left: 20px; position: relative; margin-bottom: 20px; }
         .timeline-item::before { content: '🌟'; position: absolute; left: -14px; top: 0; font-size: 18px; }
-        .item-title { font-weight: 700; color: #E91E63; font-size: 1.1em; display: block; margin-bottom: 5px; }
+        .item-title { font-weight: 700; color: var(--disney-blue); font-size: 1.1em; display: block; margin-bottom: 8px; }
 
-        .info-box { background: #E3F2FD; border: 1px solid var(--disney-blue); border-radius: 12px; padding: 10px; margin-top: 8px; font-size: 0.85em; line-height: 1.6; }
+        .info-box { background: #E3F2FD; border: 1px solid var(--disney-blue); border-radius: 12px; padding: 12px; margin-top: 8px; font-size: 0.85em; line-height: 1.6; }
         .highlight { color: #D32F2F; font-weight: 700; }
 
         .stamp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
@@ -63,7 +64,7 @@
 </head>
 <body>
 
-    <h1>🏰 2026 夢幻之星<br>香港迪士尼・馬年賀歲大冒險</h1>
+    <h1>🏰 2026 夢幻之星<br>香港迪士尼・馬年賀歲尊榮大遊蹤</h1>
 
     <div class="flight-card">
         <div class="flight-row">
@@ -82,66 +83,82 @@
 
     <div id="itinerary">
         <div id="day1" class="day-section">
+            <div class="tour-day">第一天：夢幻啟程・迪士尼童話世界</div>
             <div class="timeline-item card">
-                <div class="tour-title">【夢幻啟程】飛向東方之珠</div>
-                <span class="item-title">✈️ 抵港與迪士尼好萊塢酒店</span>
-                <p>2/19 班機抵達後，由專車接送至酒店寄放行李。</p>
+                <span class="time-tag">04:30</span><span class="item-title">🏠 出發：桃園國際機場</span>
+                <p>迎接馬年第一道曙光，準備開啟 2026 香港大冒險！</p>
+            </div>
+            <div class="timeline-item card">
+                <span class="time-tag">09:00</span><span class="item-title">✈️ 抵達：香港赤鱲角機場</span>
+                <p>搭乘長榮 BR891 抵港，由專車送往好萊塢酒店寄放行李。</p>
+                <a href="https://www.google.com/maps/dir/Hong+Kong+International+Airport,+1+Sky+Plaza+Road,+Chek+Lap+Kok,+Hong+Kong/Disney's+Hollywood+Hotel,+Hong+Kong+Disneyland+Resort,+Magic+Road,+Lantau+Island,+Hong+Kong/data=!4m14!4m13!1m5!1m1!19sChIJncZGzPPiAzQRnjaSGIKQ9fk!2m2!1d113.91372829999999!2d22.3134736!1m5!1m1!19sChIJ85WXXvLiAzQRjkXspFD_7ok!2m2!1d114.037334!2d22.309186999999998!3e0" class="map-btn" target="_blank">📍 前往好萊塢酒店</a><span class="time-badge">🚗 15min</span>
+            </div>
+            <div class="timeline-item card">
+                <span class="time-tag">10:30</span><span class="item-title">🏰 探險：迪士尼樂園 Day 1</span>
+                <p>一整日的樂園歡樂時光，搶先體驗魔雪奇緣世界。</p>
                 <div class="info-box">
-                    🍽 <strong>午餐推薦：</strong> 酒店內晶荷軒品嚐「迪士尼造型點心」。<br>
-                    🎆 <strong>今日焦點：</strong> 20:00 城堡《Momentous》煙火燈光秀。
+                    ✨ <strong>13:00</strong> 米奇慶祝大遊行<br>
+                    🎆 <strong>20:00</strong> Momentous 煙火秀
                 </div>
-                <a href="https://www.google.com/maps/search/?api=1&query=Disney+Hollywood+Hotel+Hong+Kong" class="map-btn" target="_blank">📍 查看好萊塢酒店</a>
                 <button class="btn" onclick="addStamp(0)">點我蓋章：抵達夢幻樂園</button>
             </div>
         </div>
 
         <div id="day2" class="day-section hidden">
+            <div class="tour-day">第二天：尊榮禮遇・太平山璀璨明珠</div>
             <div class="timeline-item card">
-                <div class="tour-title">【童話成真】提早入園搶先玩</div>
-                <span class="item-title">🎠 酒店早餐與魔雪奇緣大冒險</span>
-                <p>悠閒享用好萊塢酒店美味早餐後，搭乘接駁車前往樂園。</p>
+                <span class="time-tag">08:00</span><span class="item-title">🍳 早餐：好萊塢酒店主廚餐廳</span>
+                <p>享用精緻早餐，為今日的「提早入園」補充滿滿活力。</p>
+            </div>
+            <div class="timeline-item card">
+                <span class="time-tag">09:30</span><span class="item-title">✨ 搶先：提早入園券（Magic Hour）</span>
+                <p>持券搶先入園，直奔【魔雪奇緣世界】享受無人排隊的夢幻體驗。</p>
                 <div class="info-box">
-                    ✨ <span class="highlight">尊榮禮遇：</span> 持「提早入園券」領先全球衝刺！<br>
                     ❄️ <strong>必衝：</strong> 魔雪奇緣之旅、雪嶺滑雪橇。<br>
-                    🎭 <strong>必看：</strong> 14:30 迪士尼魔法書房劇場。
+                    🎭 <strong>14:30</strong> 迪士尼魔法書房劇場演出。
                 </div>
             </div>
             <div class="timeline-item card">
-                <div class="tour-title">【繁華之夜】維港夜景巡禮</div>
-                <span class="item-title">🏨 入住金域假日酒店・太平山頂</span>
-                <p>15:00 離開樂園，移動至尖沙咀鬧區。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Holiday+Inn+Golden+Mile" class="map-btn" target="_blank">📍 金域假日酒店</a><span class="time-badge">🚗 26min</span>
-                <div class="info-box">
-                    🚠 <strong>晚上：</strong> 搭乘第六代山頂纜車，俯瞰百萬夜景！
-                </div>
+                <span class="time-tag">15:00</span><span class="item-title">🏨 移動：金域假日酒店入住</span>
+                <p>告別迪士尼，移動至尖沙咀鬧區飯店辦理入住。</p>
+                <a href="https://www.google.com/maps/dir/Disney's+Hollywood+Hotel,+Hong+Kong+Disneyland+Resort,+Magic+Road,+Lantau+Island,+Hong+Kong/Holiday+Inn+Golden+Mile+Hong+Kong+by+IHG,+50+Nathan+Road,+Tsim+Sha+Tsui,+Hong+Kong/data=!4m14!4m13!1m5!1m1!19sChIJ85WXXvLiAzQRjkXspFD_7ok!2m2!1d114.037334!2d22.309186999999998!1m5!1m1!19sChIJ8SgJDvIABDQRgA6YPZc8epg!2m2!1d114.1727739!2d22.2967855!3e0" class="map-btn" target="_blank">📍 前往尖沙咀</a><span class="time-badge">🚗 26min</span>
+            </div>
+            <div class="timeline-item card">
+                <span class="time-tag">18:00</span><span class="item-title">🚠 絕景：太平山頂纜車夜景</span>
+                <p>搭乘第六代纜車登上山頂，飽覽維多利亞港之夜。</p>
                 <button class="btn" onclick="addStamp(1)">點我蓋章：幸運木馬章</button>
             </div>
         </div>
 
         <div id="day3" class="day-section hidden">
+            <div class="tour-day">第三天：海洋探險・動物明星見面會</div>
             <div class="timeline-item card">
-                <div class="tour-title">【海洋探索】動物明星見面會</div>
-                <span class="item-title">🐬 海洋公園全日大遊蹤</span>
-                <p>2/21 從尖沙咀出發，搭乘港鐵直達海洋公園大冒險。</p>
+                <span class="time-tag">10:00</span><span class="item-title">🐬 探訪：香港海洋公園</span>
+                <p>搭乘港鐵直達海洋公園，探訪國寶大熊貓與精彩動物秀。</p>
                 <div class="info-box">
-                    🐼 <strong>必看亮點：</strong> 探訪大熊貓樂樂與新生雙胞胎。<br>
-                    🏟 <strong>表演秀：</strong> 14:00 海洋劇場海豚探秘。
+                    🐼 <strong>必看：</strong> 11:00 探訪大熊貓盈盈、樂樂與雙胞胎寶寶。<br>
+                    🎭 <strong>14:00</strong> 海洋劇場「海豚探秘」表演。<br>
+                    🐧 <strong>15:15</strong> 企鵝餵食與互動秀。
                 </div>
-                <a href="https://www.google.com/maps/dir/?api=1&origin=Holiday+Inn+Golden+Mile&destination=Ocean+Park+Hong+Kong" class="map-btn" target="_blank">🧭 導航至海洋公園</a><span class="time-badge">🚇 30min</span>
+                <a href="https://www.google.com/maps/dir/Holiday+Inn+Golden+Mile+Hong+Kong+by+IHG,+50+Nathan+Road,+Tsim+Sha+Tsui,+Hong+Kong/Ocean+Park,+Aberdeen,+Hong+Kong/data=!4m14!4m13!1m5!1m1!19sChIJ8SgJDvIABDQRgA6YPZc8epg!2m2!1d114.1727739!2d22.2967855!1m5!1m1!19sChIJ4SEGMiQABDQRRhn7SYWq0fM!2m2!1d114.1757239!2d22.2466607!3e3" class="map-btn" target="_blank">🧭 導航至海洋公園</a><span class="time-badge">🚇 30min</span>
                 <button class="btn" onclick="addStamp(3)">點我蓋章：海洋小隊長章</button>
             </div>
         </div>
 
         <div id="day4" class="day-section hidden">
+            <div class="tour-day">第四天：豐盛滿載・馬年開春好運來</div>
             <div class="timeline-item card">
-                <div class="tour-title">【精彩最終】滿載回憶歸國</div>
-                <span class="item-title">🛍️ 伴手禮巡禮・賦歸</span>
-                <p>2/22 尖沙咀補貨（珍妮曲奇、蝴蝶酥）後前往機場。</p>
-                <div class="info-box">
-                    ✈️ <strong>航班：</strong> 13:30 長榮 BR868 飛向台北。<br>
-                    預計 15:20 抵台，結束四天愉快旅程。
-                </div>
-                <a href="https://www.google.com/maps/dir/?api=1&origin=Holiday+Inn+Golden+Mile&destination=Hong+Kong+International+Airport" class="map-btn" target="_blank">🧭 導航至機場</a><span class="time-badge">🚗 27min</span>
+                <span class="time-tag">09:30</span><span class="item-title">🛍️ 掃貨：尖沙咀伴手禮補貨</span>
+                <p>最後衝刺珍妮曲奇、蝴蝶酥，滿載而歸。</p>
+            </div>
+            <div class="timeline-item card">
+                <span class="time-tag">11:30</span><span class="item-title">🚕 出發：香港國際機場</span>
+                <p>辦理登機，將馬年的福氣與回憶裝滿行李。</p>
+                <a href="https://www.google.com/maps/dir/Holiday+Inn+Golden+Mile+Hong+Kong+by+IHG,+50+Nathan+Road,+Tsim+Sha+Tsui,+Hong+Kong/Hong+Kong+International+Airport,+1+Sky+Plaza+Road,+Chek+Lap+Kok,+Hong+Kong/data=!4m14!4m13!1m5!1m1!19sChIJ8SgJDvIABDQRgA6YPZc8epg!2m2!1d114.1727739!2d22.2967855!1m5!1m1!19sChIJncZGzPPiAzQRnjaSGIKQ9fk!2m2!1d113.91372829999999!2d22.3134736!3e0" class="map-btn" target="_blank">🧭 導航至機場</a><span class="time-badge">🚗 27min</span>
+            </div>
+            <div class="timeline-item card">
+                <span class="time-tag">15:20</span><span class="item-title">🏠 抵台：結束精彩香港行</span>
+                <p>長榮 BR868 抵達桃園，期待下一趟冒險！</p>
                 <button class="btn" onclick="addStamp(6)">點我蓋章：冒險成功章</button>
             </div>
         </div>
