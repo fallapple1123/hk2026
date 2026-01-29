@@ -39,7 +39,9 @@
         
         .info-box { background: #E3F2FD; border: 1px solid var(--disney-blue); border-radius: 12px; padding: 12px; margin-top: 8px; font-size: 0.85em; line-height: 1.6; }
         .food-box { background: #FFF3E0; border: 1px solid #FF9800; border-radius: 12px; padding: 12px; margin-top: 8px; font-size: 0.85em; }
-        .gift-box { background: #F3E5F5; border: 1px solid #7B1FA2; border-radius: 12px; padding: 12px; margin-top: 8px; font-size: 0.85em; }
+        
+        .map-btn { display: inline-flex; align-items: center; background: #FFF; color: #004B8D; padding: 4px 10px; border-radius: 50px; font-size: 0.8em; font-weight: 700; text-decoration: none; border: 1px solid #004B8D; margin-top: 5px; }
+        .time-badge { background: #FEEBEE; color: #D32F2F; padding: 2px 8px; border-radius: 5px; font-size: 0.75em; font-weight: 700; margin-left: 5px; border: 1px solid #FFCDD2; }
 
         .timeline-item { border-left: 3px dotted var(--disney-blue); padding-left: 20px; position: relative; margin-bottom: 20px; }
         .timeline-item::before { content: '🌟'; position: absolute; left: -14px; top: 0; font-size: 18px; }
@@ -89,22 +91,28 @@
                 <p>開啟 2026 香港大冒險！</p>
             </div>
             <div class="timeline-item card">
-                <span class="time-tag">09:00</span><span class="item-title">✈️ 抵港：迪士尼好萊塢酒店</span>
-                <p>專車送往酒店寄放行李。</p>
+                <span class="time-tag">10:00</span><span class="item-title">🏨 抵達：迪士尼好萊塢酒店</span>
+                <p>寄放行李，換上探險裝備。</p>
+                <div class="food-box">
+                    🍽 <strong>午餐推薦：晶荷軒</strong><br>
+                    迪士尼人物點心小孩必點！<br>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Crystal+Lotus+Hollywood+Hotel" class="map-btn" target="_blank">🗺️ 導航至餐廳</a>
+                </div>
+            </div>
+            <div class="timeline-item card">
+                <span class="time-tag">10:30</span><span class="item-title">🚌 移動：酒店 ➔ 迪士尼樂園</span>
+                <p>搭乘「園區接駁巴士」前往樂園大門。</p>
+                <span class="time-badge">🚌 車程約 10-15min</span>
             </div>
             <div class="timeline-item card">
                 <span class="time-tag">18:00</span><span class="item-title">🍽 晚餐：樂園內星級享用</span>
                 <div class="food-box">
-                    🍴 <strong>樂園內中式推薦：</strong><br>
-                    • <strong>廣場飯店 (Plaza Inn)：</strong> 美心集團經營，位於大街，提供經典粵菜，環境優雅最推薦。<br>
-                    • <strong>皇室宴會廳：</strong> 位於幻想世界，有中式燒味飯與點心，裝潢很有公主風，小孩會很喜歡。
+                    🍴 <strong>推薦：廣場飯店 (Plaza Inn)</strong><br>
+                    正宗中式飲茶與粵菜，環境最優雅。<br>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Plaza+Inn+Hong+Kong+Disneyland" class="map-btn" target="_blank">🗺️ 導航至餐廳</a>
                 </div>
-            </div>
-            <div class="timeline-item card">
-                <span class="item-title">🏰 迪士尼攻略 Day 1</span>
                 <div class="info-box">
-                    🔥 <strong>必玩：</strong> 魔雪奇緣之旅（Frozen Ever After）、雪嶺滑雪橇。<br>
-                    ✨ <strong>表演：</strong> 13:00 米奇遊行 / 20:00 Momentous 煙火秀。
+                    ✨ <strong>20:00</strong> Momentous 煙火秀卡位。
                 </div>
                 <button class="btn" onclick="addStamp(0)">點我蓋章：抵達夢幻樂園</button>
             </div>
@@ -113,23 +121,21 @@
         <div id="day2" class="tab-section hidden">
             <div class="tour-day">2/20 第二天：尊榮搶先衝</div>
             <div class="timeline-item card">
-                <span class="time-tag">07:30</span><span class="item-title">🍳 早餐：好萊塢酒店主廚餐廳</span>
-                <p>悠閒享用早餐。<strong>翠樂庭餐廳</strong>可與明星合照。</p>
+                <span class="time-tag">07:30</span><span class="item-title">🍳 早餐：好萊塢酒店</span>
+                <p>推薦：<strong>翠樂庭 (與明星合照)</strong></p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Enchanted+Garden+Restaurant+Disneyland" class="map-btn" target="_blank">🗺️ 查看餐廳位置</a>
             </div>
             <div class="timeline-item card">
-                <span class="time-tag">08:30</span><span class="item-title">🚌 出發：樂園衝刺</span>
-                <p>搭乘飯店接駁車前往樂園大門。</p>
-            </div>
-            <div class="timeline-item card">
-                <span class="time-tag">09:30</span><span class="item-title">❄️ 搶先：提早入園券（Early Entry）</span>
-                <p>直奔魔雪奇緣世界，享受 1 小時的尊榮時光。</p>
-            </div>
-            <div class="timeline-item card">
-                <span class="time-tag">15:00</span><span class="item-title">🚕 移動：尖沙咀金域假日酒店</span>
-                <span style="color:#D32F2F; font-size:0.85em; font-weight:bold;">🚕 預計車資：HK$230</span>
+                <span class="time-tag">09:30</span><span class="item-title">❄️ 搶先：提早入園券（Magic Hour）</span>
+                <p>直奔魔雪奇緣世界，享受無人排隊時光。</p>
             </div>
             <div class="timeline-item card">
                 <span class="time-tag">18:00</span><span class="item-title">🚠 絕景：太平山纜車夜景</span>
+                <div class="food-box">
+                    🍭 <strong>推薦：麥奀雲吞麵世家</strong><br>
+                    百年經典雲吞，小孩最愛吃麵。<br>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Mak's+Noodle+The+Peak" class="map-btn" target="_blank">🗺️ 導航至餐廳</a>
+                </div>
                 <button class="btn" onclick="addStamp(1)">點我蓋章：幸運木馬章</button>
             </div>
         </div>
@@ -138,15 +144,18 @@
             <div class="tour-day">2/21 第三天：探險與盛宴</div>
             <div class="timeline-item card">
                 <span class="time-tag">10:00</span><span class="item-title">🐬 香港海洋公園大遊蹤</span>
-                <p>必看：熊貓寶寶樂樂盈盈與雙胞胎寶寶。</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Ocean+Park+Hong+Kong" class="map-btn" target="_blank">🗺️ 導航至海洋公園</a>
             </div>
             <div class="timeline-item card" style="background:#FFF3E0; border-color:#FF9800;">
                 <span class="time-tag">18:30</span><span class="item-title">🥢 晚宴：蓮香樓 (尖沙咀)</span>
                 <p><strong>預約 7 位</strong>。體驗經典港式懷舊晚宴。</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Lin+Heung+Tea+House+Tsim+Sha+Tsui" class="map-btn" target="_blank">🗺️ 導航至餐廳</a>
             </div>
             <div class="timeline-item card">
                 <div class="food-box">
-                    🍮 <strong>必吃甜點：</strong> 佳佳甜品（芝麻糊）、義順牛奶公司（燉奶）。
+                    🍮 <strong>甜點：義順牛奶公司</strong><br>
+                    馳名雙皮燉奶，口感細緻像奶酪。<br>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Yee+Shun+Milk+Company+Tsim+Sha+Tsui" class="map-btn" target="_blank">🗺️ 導航至甜品店</a>
                 </div>
             </div>
             <button class="btn" onclick="addStamp(3)">點我蓋章：海洋小隊長章</button>
@@ -155,14 +164,22 @@
         <div id="day4" class="tab-section hidden">
             <div class="tour-day">2/22 第四天：伴手禮最後衝刺</div>
             <div class="timeline-item card">
-                <span class="time-tag">09:30</span><span class="item-title">🛍️ 掃貨：尖沙咀名產</span>
-                <div class="gift-box">
-                    🎁 <strong>清單：</strong> 珍妮曲奇（金域假日旁）、皇玥蝴蝶酥、恆香老婆餅。
+                <span class="item-title">🛍️ 尖沙咀必買清單</span>
+                <div class="info-box">
+                    🎁 <strong>珍妮曲奇 (小熊餅乾)</strong><br>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Jenny+Bakery+Tsim+Sha+Tsui" class="map-btn" target="_blank">🗺️ 導航至珍妮曲奇</a><br>
+                    🎁 <strong>皇玥蝴蝶酥</strong><br>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Imperial+Patisserie+Tsim+Sha+Tsui" class="map-btn" target="_blank">🗺️ 導航至皇玥</a>
+                </div>
+            </div>
+            <div class="timeline-item card">
+                <div class="food-box">
+                    🍟 <strong>必吃小吃：媽咪雞蛋仔</strong><br>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Mammy+Pancake+Tsim+Sha+Tsui" class="map-btn" target="_blank">🗺️ 導航至雞蛋仔</a>
                 </div>
             </div>
             <div class="timeline-item card">
                 <span class="time-tag">13:30</span><span class="item-title">✈️ 歸途：飛往台北</span>
-                <p>帶著滿滿回憶與戰利品歸國！</p>
                 <button class="btn" onclick="addStamp(6)">點我蓋章：冒險成功章</button>
             </div>
         </div>
@@ -254,7 +271,7 @@
                 document.getElementById('expNote').value = '';
                 document.getElementById('expAmt').value = '';
                 showExp();
-                alert("已成功存入錢包！");
+                alert("已存入錢包！");
             }
         }
         updateStamps(); showExp();
