@@ -23,51 +23,50 @@
             color: var(--text); margin: 0; padding: 15px; font-weight: 500;
         }
 
-        h1 { text-align: center; margin: 15px 0; font-weight: 700; color: var(--disney-blue); text-shadow: 2px 2px 0px white; font-size: 1.5em; }
+        h1 { text-align: center; margin: 15px 0; font-weight: 700; color: var(--disney-blue); text-shadow: 2px 2px 0px white; font-size: 1.4em; }
         
-        .strategy-card { background: #E3F2FD; border: 2px solid var(--disney-blue); border-radius: 15px; padding: 12px; margin-top: 10px; font-size: 0.9em; }
-        .strategy-title { font-weight: 700; color: var(--disney-blue); display: block; margin-bottom: 5px; }
-        .show-tag { background: #FFF; border: 1px solid #E91E63; color: #E91E63; padding: 2px 8px; border-radius: 5px; font-size: 0.8em; font-weight: 700; margin-right: 5px; }
-
         .card { background: white; border: var(--line); border-radius: 20px; padding: 15px; margin-bottom: 20px; box-shadow: 6px 6px 0px rgba(0, 75, 141, 0.1); }
-        .flight-card { background: #FFFDE7; border: 2px dashed var(--disney-blue); padding: 15px; border-radius: 20px; margin-bottom: 20px; }
-        .flight-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.9em; }
+        
+        /* ✈️ 航班卡片 */
+        .flight-card { background: #FFFDE7; border: 2px dashed var(--disney-blue); padding: 15px; border-radius: 20px; margin-bottom: 20px; font-size: 0.9em; }
+        .flight-row { display: flex; justify-content: space-between; align-items: center; }
 
         .tabs { display: flex; gap: 8px; margin-bottom: 15px; overflow-x: auto; padding: 5px; }
-        .tab { flex: 1; padding: 15px 10px; border: var(--line); border-radius: 50px; text-align: center; background: white; cursor: pointer; font-weight: 700; color: var(--disney-blue); min-width: 70px; }
-        .tab.active { background: var(--disney-gold); transform: scale(1.1); }
+        .tab { flex: 1; padding: 12px; border: var(--line); border-radius: 50px; text-align: center; background: white; cursor: pointer; font-weight: 700; color: var(--disney-blue); min-width: 70px; }
+        .tab.active { background: var(--disney-gold); transform: scale(1.05); }
 
         .timeline-item { border-left: 3px dotted var(--disney-blue); padding-left: 20px; position: relative; margin-bottom: 15px; }
         .timeline-item::before { content: '✨'; position: absolute; left: -14px; top: 0; font-size: 18px; }
         .item-title { font-weight: 700; color: #E91E63; font-size: 1.1em; display: block; margin-bottom: 5px; }
 
+        /* 集章樣式 */
         .stamp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
         .stamp { aspect-ratio: 1; border: 2.5px dashed #CCC; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #fdfdfd; overflow: hidden; filter: grayscale(1); }
         .stamp img { width: 85%; height: 85%; object-fit: contain; }
         .stamp.got { filter: grayscale(0); border: 3px solid var(--disney-gold); background: #FFFDE7; animation: pop-in 0.4s forwards; }
 
+        /* 💰 記帳區 */
+        .input-box { width: 100%; padding: 12px; border: 2px solid var(--disney-blue); border-radius: 12px; margin-bottom: 8px; font-size: 1em; }
+        .expense-row { display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding: 5px 0; font-size: 0.9em; }
+
         #stamp-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 10000; }
-        .anim-img { width: 250px; height: 250px; opacity: 0; }
+        .anim-img { width: 220px; height: 220px; opacity: 0; }
         .show-stamp .anim-img { animation: stamp-down 0.6s ease-out forwards; }
 
-        @keyframes stamp-down { 0% { transform: scale(5) rotate(-30deg); opacity: 0; } 50% { transform: scale(1) rotate(0deg); opacity: 1; } 100% { transform: scale(1.2) rotate(10deg); opacity: 0; } }
+        @keyframes stamp-down { 0% { transform: scale(5) rotate(-20deg); opacity: 0; } 50% { transform: scale(1) rotate(0deg); opacity: 1; } 100% { transform: scale(1.1) rotate(10deg); opacity: 0; } }
         @keyframes pop-in { 0% { transform: scale(0); } 100% { transform: scale(1) rotate(8deg); } }
 
-        .btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 15px; margin-top: 10px; background: var(--disney-gold); border: var(--line); border-radius: 15px; font-weight: 700; cursor: pointer; color: var(--disney-blue); font-size: 1.1em; }
+        .btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px; margin-top: 10px; background: var(--disney-gold); border: var(--line); border-radius: 15px; font-weight: 700; cursor: pointer; color: var(--disney-blue); }
         .hidden { display: none; }
-
-        /* 隱藏獎勵區塊 */
-        #reward-zone { background: #FFF9C4; border: 3px double #FBC02D; margin-top: 10px; }
     </style>
 </head>
 <body>
 
-    <h1>🏰 2026 夢幻之星<br>馬年香港迪士尼大冒險！</h1>
+    <h1>🏰 2026 夢幻之星<br>香港迪士尼大冒險！</h1>
 
     <div class="flight-card">
-        <h3>✈️ 冒險航班</h3>
         <div class="flight-row">
-            <div><strong>2/19 出發 BR891</strong><br><small>07:00 🛫 09:00</small></div>
+            <div><strong>2/19 去程 BR891</strong><br><small>07:00 🛫 09:00</small></div>
             <div style="font-size: 1.5em;">🐎</div>
             <div style="text-align: right;"><strong>2/22 回程 BR868</strong><br><small>13:30 🛫 15:20</small></div>
         </div>
@@ -83,43 +82,32 @@
     <div id="itinerary">
         <div id="day1" class="day-section">
             <div class="timeline-item card">
-                <span class="item-title">🏰 抵達迪士尼好萊塢酒店</span>
+                <span class="item-title">抵達迪士尼好萊塢酒店</span>
                 <p>2/19 寄放行李後開啟樂園冒險！</p>
-                <div class="strategy-card">
-                    <span class="strategy-title">💡 必看表演清單</span>
-                    <span class="show-tag">13:00</span> 米奇慶祝大遊行<br>
-                    <span class="show-tag">20:00</span> Momentous 煙火秀
-                </div>
-                <button class="btn" onclick="addStamp(0)"><img src="fantasy castle.png" width="30" onerror="this.style.display='none'"> 點我蓋章：抵達夢幻樂園</button>
+                <button class="btn" onclick="addStamp(0)"><img src="fantasy castle.png" width="25" onerror="this.style.display='none'"> 點我蓋章：抵達樂園</button>
             </div>
         </div>
-
         <div id="day2" class="day-section hidden">
             <div class="timeline-item card">
-                <span class="item-title">🎠 迪士尼樂園最後衝刺</span>
-                <p>2/20 繼續遊玩設施，下午 15:00 離開前往金域假日酒店。</p>
-                <button class="btn" onclick="addStamp(1)"><img src="horse.png" width="30" onerror="this.style.display='none'"> 點我蓋章：幸運木馬章</button>
+                <span class="item-title">樂園續遊 & 移動</span>
+                <p>15:00 前往金域假日酒店入住。</p>
+                <button class="btn" onclick="addStamp(1)"><img src="horse.png" width="25" onerror="this.style.display='none'"> 點我蓋章：幸運木馬</button>
             </div>
             <div class="timeline-item card">
-                <span class="item-title">🚠 太平山頂夜景</span>
-                <p>入住金域假日酒店後出發。</p>
-                <button class="btn" onclick="addStamp(2)"><img src="cable car.png" width="30" onerror="this.style.display='none'"> 點我蓋章：山頂夜景章</button>
+                <span class="item-title">太平山纜車夜景</span>
+                <button class="btn" onclick="addStamp(2)"><img src="cable car.png" width="25" onerror="this.style.display='none'"> 點我蓋章：太平山頂</button>
             </div>
         </div>
-
         <div id="day3" class="day-section hidden">
             <div class="timeline-item card">
-                <span class="item-title">🐬 海洋公園大冒險</span>
-                <p>2/21 全日海洋公園行程。</p>
-                <button class="btn" onclick="addStamp(3)"><img src="ocean park.png" width="30" onerror="this.style.display='none'"> 點我蓋章：海洋冒險章</button>
+                <span class="item-title">海洋公園冒險</span>
+                <button class="btn" onclick="addStamp(3)"><img src="ocean park.png" width="25" onerror="this.style.display='none'"> 點我蓋章：海洋小隊長</button>
             </div>
         </div>
-
         <div id="day4" class="day-section hidden">
             <div class="timeline-item card">
-                <span class="item-title">✈️ 冒險成功回家囉</span>
-                <p>2/22 伴手禮補貨後搭乘 BR868。</p>
-                <button class="btn" onclick="addStamp(6)"><img src="airplane.png" width="30" onerror="this.style.display='none'"> 點我蓋章：大英雄章</button>
+                <span class="item-title">機場回程</span>
+                <button class="btn" onclick="addStamp(6)"><img src="airplane.png" width="25" onerror="this.style.display='none'"> 點我蓋章：冒險成功</button>
             </div>
         </div>
     </div>
@@ -136,12 +124,18 @@
             <div class="stamp"><img src="airplane.png"></div>
             <div class="stamp"><img src="hidden_master.png"></div>
         </div>
+    </div>
 
-        <div id="reward-zone" class="card hidden" style="text-align: center;">
-            <strong>🏆 隱藏任務達成！</strong><br>
-            <p>恭喜你集齊了所有冒險印章！</p>
-            <button class="btn" onclick="addStamp(7)">🌟 領取「馬年大冒險家」勳章</button>
+    <div class="card">
+        <h3>💰 冒險錢包 (1 HKD = 4 TWD)</h3>
+        <input type="text" id="expNote" class="input-box" placeholder="買了什麼？">
+        <input type="number" id="expAmt" class="input-box" placeholder="港幣金額 HKD">
+        <button class="btn" style="background:#E1F5FE;" onclick="saveExp()">📝 存入帳單</button>
+        <div id="expList" style="margin-top: 15px;"></div>
+        <div style="text-align: right; font-weight: bold; border-top: 1px dashed #ccc; padding-top: 10px; margin-top: 10px;">
+            總額：<span id="totalTwd" style="color: #D32F2F; font-size: 1.2em;">0</span> TWD
         </div>
+        <button class="btn" style="background:#E8F5E9; font-size: 0.8em;" onclick="exportCSV()">📤 匯出 CSV 報表</button>
     </div>
 
     <div id="stamp-overlay"><img id="active-stamp-img" src="" class="anim-img"></div>
@@ -159,12 +153,6 @@
         function updateStamps() {
             const items = document.querySelectorAll('.stamp');
             stamps.forEach(idx => { if (items[idx]) items[idx].classList.add('got'); });
-            
-            // 檢查是否集滿 7 個章 (不含最後一個)
-            const count = stamps.filter(s => s < 7).length;
-            if (count >= 5) { // 這裡您可以設定要集滿幾個才出現按鈕
-                document.getElementById('reward-zone').classList.remove('hidden');
-            }
         }
 
         function addStamp(idx) {
@@ -172,12 +160,10 @@
                 const sound = document.getElementById('stamp-sound');
                 const overlay = document.getElementById('stamp-overlay');
                 const animImg = document.getElementById('active-stamp-img');
-
                 sound.currentTime = 0; sound.play();
                 animImg.src = stampPaths[idx];
                 overlay.style.display = 'flex';
                 overlay.classList.add('show-stamp');
-
                 setTimeout(() => {
                     overlay.style.display = 'none';
                     overlay.classList.remove('show-stamp');
@@ -189,7 +175,37 @@
                 }, 600);
             }
         }
-        updateStamps();
+
+        let expData = JSON.parse(localStorage.getItem('hk_exp')) || [];
+        function showExp() {
+            const list = document.getElementById('expList');
+            let sum = 0; list.innerHTML = '';
+            expData.forEach(e => {
+                sum += e.amt * 4;
+                list.innerHTML += `<div class="expense-row"><span>· ${e.note}</span><span>NT$ ${e.amt*4}</span></div>`;
+            });
+            document.getElementById('totalTwd').innerText = sum.toLocaleString();
+        }
+        function saveExp() {
+            const note = document.getElementById('expNote').value;
+            const amt = document.getElementById('expAmt').value;
+            if(note && amt) {
+                expData.push({note, amt: parseFloat(amt)});
+                localStorage.setItem('hk_exp', JSON.stringify(expData));
+                document.getElementById('expNote').value = '';
+                document.getElementById('expAmt').value = '';
+                showExp();
+            }
+        }
+        function exportCSV() {
+            let csv = "項目,港幣,台幣\n";
+            expData.forEach(e => csv += `${e.note},${e.amt},${e.amt*4}\n`);
+            const blob = new Blob(["\ufeff" + csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url; a.download = "2026香港開銷.csv"; a.click();
+        }
+        updateStamps(); showExp();
     </script>
 </body>
 </html>
