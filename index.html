@@ -24,7 +24,6 @@
         }
 
         h1 { text-align: center; margin: 15px 0; font-weight: 700; color: var(--disney-blue); text-shadow: 2px 2px 0px white; font-size: 1.4em; }
-        
         .card { background: white; border: var(--line); border-radius: 20px; padding: 15px; margin-bottom: 20px; box-shadow: 6px 6px 0px rgba(0, 75, 141, 0.1); }
         
         /* ✈️ 航班卡片 */
@@ -38,6 +37,10 @@
         .timeline-item { border-left: 3px dotted var(--disney-blue); padding-left: 20px; position: relative; margin-bottom: 15px; }
         .timeline-item::before { content: '✨'; position: absolute; left: -14px; top: 0; font-size: 18px; }
         .item-title { font-weight: 700; color: #E91E63; font-size: 1.1em; display: block; margin-bottom: 5px; }
+
+        .strategy-card { background: #E3F2FD; border: 2px solid var(--disney-blue); border-radius: 15px; padding: 12px; margin-top: 10px; font-size: 0.9em; }
+        .strategy-title { font-weight: 700; color: var(--disney-blue); display: block; margin-bottom: 5px; }
+        .show-tag { background: #FFF; border: 1px solid #E91E63; color: #E91E63; padding: 2px 8px; border-radius: 5px; font-size: 0.8em; font-weight: 700; margin-right: 5px; }
 
         /* 集章樣式 */
         .stamp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
@@ -82,32 +85,58 @@
     <div id="itinerary">
         <div id="day1" class="day-section">
             <div class="timeline-item card">
-                <span class="item-title">抵達迪士尼好萊塢酒店</span>
-                <p>2/19 寄放行李後開啟樂園冒險！</p>
-                <button class="btn" onclick="addStamp(0)"><img src="fantasy castle.png" width="25" onerror="this.style.display='none'"> 點我蓋章：抵達樂園</button>
+                <span class="item-title">🏠 出發桃園機場</span>
+                <p>04:30 晨喚出發！預計 05:30 抵達機場辦理登機。</p>
+            </div>
+            <div class="timeline-item card">
+                <span class="item-title">✈️ 飛向香港 BR891</span>
+                <p>07:00 起飛，09:00 抵達赤鱲角機場。</p>
+                <button class="btn" onclick="addStamp(0)"><img src="fantasy castle.png" width="25" onerror="this.style.display='none'"> 點我蓋章：抵達夢幻樂園</button>
+            </div>
+            <div class="timeline-item card">
+                <span class="item-title">🏨 迪士尼好萊塢酒店</span>
+                <p>寄放行李後開啟樂園 Day 1 冒險！</p>
+                <div class="strategy-card">
+                    <span class="strategy-title">💡 今日攻略</span>
+                    <span class="show-tag">13:00</span> 米奇慶祝大遊行<br>
+                    <span class="show-tag">20:00</span> 煙火秀
+                </div>
             </div>
         </div>
+
         <div id="day2" class="day-section hidden">
             <div class="timeline-item card">
-                <span class="item-title">樂園續遊 & 移動</span>
-                <p>15:00 前往金域假日酒店入住。</p>
-                <button class="btn" onclick="addStamp(1)"><img src="horse.png" width="25" onerror="this.style.display='none'"> 點我蓋章：幸運木馬</button>
+                <span class="item-title">🎠 樂園續遊 & 移動飯店</span>
+                <p>15:00 離開迪士尼，移動至「金域假日酒店」。</p>
+                <button class="btn" onclick="addStamp(1)"><img src="horse.png" width="25" onerror="this.style.display='none'"> 點我蓋章：幸運木馬章</button>
             </div>
             <div class="timeline-item card">
-                <span class="item-title">太平山纜車夜景</span>
-                <button class="btn" onclick="addStamp(2)"><img src="cable car.png" width="25" onerror="this.style.display='none'"> 點我蓋章：太平山頂</button>
+                <span class="item-title">🚠 太平山纜車夜景</span>
+                <button class="btn" onclick="addStamp(2)"><img src="cable car.png" width="25" onerror="this.style.display='none'"> 點我蓋章：山頂夜景章</button>
             </div>
         </div>
+
         <div id="day3" class="day-section hidden">
             <div class="timeline-item card">
-                <span class="item-title">海洋公園冒險</span>
-                <button class="btn" onclick="addStamp(3)"><img src="ocean park.png" width="25" onerror="this.style.display='none'"> 點我蓋章：海洋小隊長</button>
+                <span class="item-title">🐬 海洋公園大冒險</span>
+                <p>全日海洋探險，看企鵝與搭纜車！</p>
+                <button class="btn" onclick="addStamp(3)"><img src="ocean park.png" width="25" onerror="this.style.display='none'"> 點我蓋章：海洋小隊長章</button>
             </div>
         </div>
+
         <div id="day4" class="day-section hidden">
             <div class="timeline-item card">
-                <span class="item-title">機場回程</span>
-                <button class="btn" onclick="addStamp(6)"><img src="airplane.png" width="25" onerror="this.style.display='none'"> 點我蓋章：冒險成功</button>
+                <span class="item-title">🛍️ 伴手禮補貨 & 機場</span>
+                <p>尖沙咀最後巡禮後，11:30 出發前往機場。</p>
+            </div>
+            <div class="timeline-item card">
+                <span class="item-title">✈️ 歸途 BR868</span>
+                <p>13:30 香港起飛，15:20 抵達桃園機場。</p>
+                <button class="btn" onclick="addStamp(6)"><img src="airplane.png" width="25" onerror="this.style.display='none'"> 點我蓋章：冒險成功章</button>
+            </div>
+            <div class="timeline-item card">
+                <span class="item-title">🏠 回到溫暖的家</span>
+                <p>預計 17:00 抵達家門，分享冒險戰利品！</p>
             </div>
         </div>
     </div>
