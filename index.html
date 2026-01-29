@@ -10,7 +10,6 @@
             --bg: #FFF9F2;
             --disney-gold: #FFD700;
             --disney-blue: #004B8D;
-            --p-pink: #FFB6C1;
             --text: #5D4037;
             --line: 3px solid #004B8D;
         }
@@ -26,9 +25,8 @@
 
         h1 { text-align: center; margin: 15px 0; font-weight: 700; color: var(--disney-blue); text-shadow: 2px 2px 0px white; font-size: 1.5em; }
         
-        /* 攻略區塊樣式 */
         .strategy-card { background: #E3F2FD; border: 2px solid var(--disney-blue); border-radius: 15px; padding: 12px; margin-top: 10px; font-size: 0.9em; }
-        .strategy-title { font-weight: 700; color: var(--disney-blue); display: block; margin-bottom: 5px; border-bottom: 1px solid var(--disney-blue); }
+        .strategy-title { font-weight: 700; color: var(--disney-blue); display: block; margin-bottom: 5px; }
         .show-tag { background: #FFF; border: 1px solid #E91E63; color: #E91E63; padding: 2px 8px; border-radius: 5px; font-size: 0.8em; font-weight: 700; margin-right: 5px; }
 
         .card { background: white; border: var(--line); border-radius: 20px; padding: 15px; margin-bottom: 20px; box-shadow: 6px 6px 0px rgba(0, 75, 141, 0.1); }
@@ -43,13 +41,12 @@
         .timeline-item::before { content: '✨'; position: absolute; left: -14px; top: 0; font-size: 18px; }
         .item-title { font-weight: 700; color: #E91E63; font-size: 1.1em; display: block; margin-bottom: 5px; }
 
-        /* 數位集章冊 */
         .stamp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-        .stamp { aspect-ratio: 1; border: 2px dashed #CCC; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #fdfdfd; overflow: hidden; filter: grayscale(1); }
+        .stamp { aspect-ratio: 1; border: 2.5px dashed #CCC; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #fdfdfd; overflow: hidden; filter: grayscale(1); }
         .stamp img { width: 85%; height: 85%; object-fit: contain; }
         .stamp.got { filter: grayscale(0); border: 3px solid var(--disney-gold); background: #FFFDE7; animation: pop-in 0.4s forwards; }
 
-        #stamp-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.8); display: none; align-items: center; justify-content: center; z-index: 10000; }
+        #stamp-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 10000; }
         .anim-img { width: 250px; height: 250px; opacity: 0; }
         .show-stamp .anim-img { animation: stamp-down 0.6s ease-out forwards; }
 
@@ -58,6 +55,9 @@
 
         .btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 15px; margin-top: 10px; background: var(--disney-gold); border: var(--line); border-radius: 15px; font-weight: 700; cursor: pointer; color: var(--disney-blue); font-size: 1.1em; }
         .hidden { display: none; }
+
+        /* 隱藏獎勵區塊 */
+        #reward-zone { background: #FFF9C4; border: 3px double #FBC02D; margin-top: 10px; }
     </style>
 </head>
 <body>
@@ -83,59 +83,43 @@
     <div id="itinerary">
         <div id="day1" class="day-section">
             <div class="timeline-item card">
-                <span class="item-title">🏰 抵達好萊塢酒店 & 開園</span>
-                <p>2/19 寄放行李後，直接使用飯店接駁車前往樂園！</p>
-                
+                <span class="item-title">🏰 抵達迪士尼好萊塢酒店</span>
+                <p>2/19 寄放行李後開啟樂園冒險！</p>
                 <div class="strategy-card">
-                    <span class="strategy-title">💡 探險家必勝攻略</span>
-                    • <strong>搶先衝「魔雪奇緣世界」：</strong> 一進園直接左轉走到底，趁體力最好排最熱門設施。<br>
-                    • <strong>下載官方 APP：</strong> 即時查看排隊時間與表演預約。<br>
-                    • <strong>必看表演時間：</strong><br>
+                    <span class="strategy-title">💡 必看表演清單</span>
                     <span class="show-tag">13:00</span> 米奇慶祝大遊行<br>
-                    <span class="show-tag">14:30</span> 迪士尼魔法書房 (需提早30分排隊)<br>
                     <span class="show-tag">20:00</span> Momentous 煙火秀
                 </div>
-                
-                <button class="btn" onclick="addStamp(0)"><img src="fantasy castle.png" width="30" onerror="this.style.display='none'"> 蓋章：抵達夢幻樂園</button>
+                <button class="btn" onclick="addStamp(0)"><img src="fantasy castle.png" width="30" onerror="this.style.display='none'"> 點我蓋章：抵達夢幻樂園</button>
             </div>
         </div>
 
         <div id="day2" class="day-section hidden">
             <div class="timeline-item card">
-                <span class="item-title">🎠 樂園續遊 & 移動</span>
-                <p>2/20 繼續完成昨天的遺珠設施！下午移動至尖沙咀。</p>
-                
-                <div class="strategy-card">
-                    <span class="strategy-title">🎭 必看劇場推薦</span>
-                    • <strong>獅子王慶典：</strong> 位於探險世界，360度舞台震撼力十足！<br>
-                    • <strong>反斗奇兵大本營：</strong> 下午光影拍照最美。<br>
-                    <span class="show-tag">13:30</span> 迪士尼公主巡禮 (廣場區)
-                </div>
-                
-                <p><small>※ 15:00 離開飯店移動至尖沙咀金域假日酒店。</small></p>
-                <button class="btn" onclick="addStamp(1)"><img src="horse.png" width="30" onerror="this.style.display='none'"> 蓋章：馬年幸運木馬</button>
+                <span class="item-title">🎠 迪士尼樂園最後衝刺</span>
+                <p>2/20 繼續遊玩設施，下午 15:00 離開前往金域假日酒店。</p>
+                <button class="btn" onclick="addStamp(1)"><img src="horse.png" width="30" onerror="this.style.display='none'"> 點我蓋章：幸運木馬章</button>
             </div>
-            
             <div class="timeline-item card">
-                <span class="item-title">🚠 太平山頂夜景之旅</span>
-                <p>入住金域假日酒店後，出發前往中環搭纜車。</p>
-                <button class="btn" onclick="addStamp(2)"><img src="cable car.png" width="30" onerror="this.style.display='none'"> 蓋章：山頂小探險</button>
+                <span class="item-title">🚠 太平山頂夜景</span>
+                <p>入住金域假日酒店後出發。</p>
+                <button class="btn" onclick="addStamp(2)"><img src="cable car.png" width="30" onerror="this.style.display='none'"> 點我蓋章：山頂夜景章</button>
             </div>
         </div>
 
         <div id="day3" class="day-section hidden">
             <div class="timeline-item card">
                 <span class="item-title">🐬 海洋公園大冒險</span>
-                <p>2/21 全日海洋公園，搭乘大纜車看企鵝與海豚！</p>
-                <button class="btn" onclick="addStamp(3)"><img src="ocean park.png" width="30" onerror="this.style.display='none'"> 蓋章：海洋小隊長</button>
+                <p>2/21 全日海洋公園行程。</p>
+                <button class="btn" onclick="addStamp(3)"><img src="ocean park.png" width="30" onerror="this.style.display='none'"> 點我蓋章：海洋冒險章</button>
             </div>
         </div>
 
         <div id="day4" class="day-section hidden">
             <div class="timeline-item card">
-                <span class="item-title">🛍️ 最後補貨 & 回家</span>
-                <p>2/22 尖沙咀補貨後，前往機場搭乘 BR868。</p>
-                <button class="btn" onclick="addStamp(6)"><img src="airplane.png" width="30" onerror="this.style.display='none'"> 蓋章：馬年大英雄！</button>
+                <span class="item-title">✈️ 冒險成功回家囉</span>
+                <p>2/22 伴手禮補貨後搭乘 BR868。</p>
+                <button class="btn" onclick="addStamp(6)"><img src="airplane.png" width="30" onerror="this.style.display='none'"> 點我蓋章：大英雄章</button>
             </div>
         </div>
     </div>
@@ -151,6 +135,12 @@
             <div class="stamp"><img src="cookie.png"></div>
             <div class="stamp"><img src="airplane.png"></div>
             <div class="stamp"><img src="hidden_master.png"></div>
+        </div>
+
+        <div id="reward-zone" class="card hidden" style="text-align: center;">
+            <strong>🏆 隱藏任務達成！</strong><br>
+            <p>恭喜你集齊了所有冒險印章！</p>
+            <button class="btn" onclick="addStamp(7)">🌟 領取「馬年大冒險家」勳章</button>
         </div>
     </div>
 
@@ -169,6 +159,12 @@
         function updateStamps() {
             const items = document.querySelectorAll('.stamp');
             stamps.forEach(idx => { if (items[idx]) items[idx].classList.add('got'); });
+            
+            // 檢查是否集滿 7 個章 (不含最後一個)
+            const count = stamps.filter(s => s < 7).length;
+            if (count >= 5) { // 這裡您可以設定要集滿幾個才出現按鈕
+                document.getElementById('reward-zone').classList.remove('hidden');
+            }
         }
 
         function addStamp(idx) {
