@@ -23,36 +23,36 @@
             color: var(--text); margin: 0; padding: 15px; font-weight: 500;
         }
 
-        h1 { text-align: center; margin: 15px 0; font-weight: 700; color: var(--disney-blue); text-shadow: 2px 2px 0px white; font-size: 1.3em; line-height: 1.4; }
+        h1 { text-align: center; margin: 15px 0; font-weight: 700; color: var(--disney-blue); text-shadow: 2px 2px 0px white; font-size: 1.25em; line-height: 1.4; }
         .card { background: white; border: var(--line); border-radius: 20px; padding: 18px; margin-bottom: 20px; box-shadow: 6px 6px 0px rgba(0, 75, 141, 0.1); }
         
         .flight-card { background: #FFFDE7; border: 2px dashed var(--disney-blue); padding: 15px; border-radius: 20px; margin-bottom: 20px; font-size: 0.9em; }
         .flight-row { display: flex; justify-content: space-between; align-items: center; }
 
-        /* 旅行社風格標籤 */
         .tour-day { background: var(--disney-blue); color: white; padding: 3px 10px; border-radius: 5px; font-size: 0.8em; margin-bottom: 8px; display: inline-block; }
         .time-tag { background: #E91E63; color: white; padding: 2px 8px; border-radius: 5px; font-size: 0.85em; font-weight: 700; margin-right: 8px; }
         .map-btn { display: inline-flex; align-items: center; background: #E3F2FD; color: #004B8D; padding: 5px 12px; border-radius: 50px; font-size: 0.85em; font-weight: 700; text-decoration: none; border: 1px solid #004B8D; margin-top: 10px; }
         .time-badge { background: #FEEBEE; color: #D32F2F; padding: 2px 8px; border-radius: 5px; font-size: 0.75em; font-weight: 700; margin-left: 5px; border: 1px solid #FFCDD2; }
 
-        .tabs { display: flex; gap: 8px; margin-bottom: 15px; overflow-x: auto; padding: 5px; }
-        .tab { flex: 1; padding: 12px; border: var(--line); border-radius: 50px; text-align: center; background: white; cursor: pointer; font-weight: 700; color: var(--disney-blue); min-width: 80px; }
-        .tab.active { background: var(--disney-gold); transform: scale(1.05); }
+        .tabs { display: flex; gap: 6px; margin-bottom: 15px; overflow-x: auto; padding: 5px; scrollbar-width: none; }
+        .tabs::-webkit-scrollbar { display: none; }
+        .tab { flex-shrink: 0; padding: 12px 18px; border: var(--line); border-radius: 50px; text-align: center; background: white; cursor: pointer; font-weight: 700; color: var(--disney-blue); font-size: 0.95em; }
+        .tab.active { background: var(--disney-gold); transform: scale(1.05); border-color: var(--disney-blue); }
 
         .timeline-item { border-left: 3px dotted var(--disney-blue); padding-left: 20px; position: relative; margin-bottom: 20px; }
         .timeline-item::before { content: '🌟'; position: absolute; left: -14px; top: 0; font-size: 18px; }
-        .item-title { font-weight: 700; color: var(--disney-blue); font-size: 1.1em; display: block; margin-bottom: 8px; }
+        .item-title { font-weight: 700; color: var(--disney-blue); font-size: 1.05em; display: block; margin-bottom: 8px; }
 
         .info-box { background: #E3F2FD; border: 1px solid var(--disney-blue); border-radius: 12px; padding: 12px; margin-top: 8px; font-size: 0.85em; line-height: 1.6; }
-        .highlight { color: #D32F2F; font-weight: 700; }
-
-        .stamp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        
+        /* 集章冊區域 */
+        .stamp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
         .stamp { aspect-ratio: 1; border: 2.5px dashed #CCC; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #fdfdfd; overflow: hidden; filter: grayscale(1); }
         .stamp img { width: 85%; height: 85%; object-fit: contain; }
         .stamp.got { filter: grayscale(0); border: 3px solid var(--disney-gold); background: #FFFDE7; animation: pop-in 0.4s forwards; }
 
-        .btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 14px; margin-top: 15px; background: var(--disney-gold); border: var(--line); border-radius: 15px; font-weight: 700; cursor: pointer; color: var(--disney-blue); font-size: 1.05em; }
-        .input-box { width: 100%; padding: 12px; border: 2px solid var(--disney-blue); border-radius: 12px; margin-bottom: 8px; font-size: 1em; }
+        .btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 14px; margin-top: 15px; background: var(--disney-gold); border: var(--line); border-radius: 15px; font-weight: 700; cursor: pointer; color: var(--disney-blue); font-size: 1em; }
+        .input-box { width: 100%; padding: 14px; border: 2px solid var(--disney-blue); border-radius: 12px; margin-bottom: 10px; font-size: 1em; background: #fff; }
         
         #stamp-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 10000; }
         .anim-img { width: 220px; height: 220px; opacity: 0; }
@@ -64,109 +64,109 @@
 </head>
 <body>
 
-    <h1>🏰 2026 夢幻之星<br>香港迪士尼・馬年賀歲尊榮大遊蹤</h1>
+    <h1>🏰 2026 夢幻之星<br>香港迪士尼・尊榮賀歲大冒險</h1>
 
     <div class="flight-card">
         <div class="flight-row">
             <div><strong>2/19 去程 BR891</strong><br><small>07:00 🛫 09:00</small></div>
-            <div><span style="font-size:1.5em;">✈️</span></div>
+            <div style="font-size: 1.5em;">✈️</div>
             <div style="text-align: right;"><strong>2/22 回程 BR868</strong><br><small>13:30 🛫 15:20</small></div>
         </div>
     </div>
 
     <div class="tabs">
-        <div class="tab active" onclick="setDay(1)">Day 1</div>
-        <div class="tab" onclick="setDay(2)">Day 2</div>
-        <div class="tab" onclick="setDay(3)">Day 3</div>
-        <div class="tab" onclick="setDay(4)">Day 4</div>
+        <div class="tab active" onclick="setTab(1)">Day 1</div>
+        <div class="tab" onclick="setTab(2)">Day 2</div>
+        <div class="tab" onclick="setTab(3)">Day 3</div>
+        <div class="tab" onclick="setTab(4)">Day 4</div>
+        <div class="tab" onclick="setTab(5)">💰 錢包</div>
     </div>
 
-    <div id="itinerary">
-        <div id="day1" class="day-section">
+    <div id="main-content">
+        <div id="day1" class="tab-section">
             <div class="tour-day">第一天：夢幻啟程・迪士尼童話世界</div>
             <div class="timeline-item card">
                 <span class="time-tag">04:30</span><span class="item-title">🏠 出發：桃園國際機場</span>
-                <p>迎接馬年第一道曙光，準備開啟 2026 香港大冒險！</p>
+                <p>開啟 2026 馬年賀歲之旅，準備飛往香港！</p>
             </div>
             <div class="timeline-item card">
-                <span class="time-tag">09:00</span><span class="item-title">✈️ 抵達：香港赤鱲角機場</span>
-                <p>搭乘長榮 BR891 抵港，由專車送往好萊塢酒店寄放行李。</p>
-                <a href="https://www.google.com/maps/dir/Hong+Kong+International+Airport,+1+Sky+Plaza+Road,+Chek+Lap+Kok,+Hong+Kong/Disney's+Hollywood+Hotel,+Hong+Kong+Disneyland+Resort,+Magic+Road,+Lantau+Island,+Hong+Kong/data=!4m14!4m13!1m5!1m1!19sChIJncZGzPPiAzQRnjaSGIKQ9fk!2m2!1d113.91372829999999!2d22.3134736!1m5!1m1!19sChIJ85WXXvLiAzQRjkXspFD_7ok!2m2!1d114.037334!2d22.309186999999998!3e0" class="map-btn" target="_blank">📍 前往好萊塢酒店</a><span class="time-badge">🚗 15min</span>
-            </div>
-            <div class="timeline-item card">
-                <span class="time-tag">10:30</span><span class="item-title">🏰 探險：迪士尼樂園 Day 1</span>
-                <p>一整日的樂園歡樂時光，搶先體驗魔雪奇緣世界。</p>
-                <div class="info-box">
-                    ✨ <strong>13:00</strong> 米奇慶祝大遊行<br>
-                    🎆 <strong>20:00</strong> Momentous 煙火秀
-                </div>
+                <span class="time-tag">09:00</span><span class="item-title">✈️ 抵港：由專車送往酒店</span>
+                <p>抵達後前往迪士尼好萊塢酒店寄放行李。</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Disney%27s+Hollywood+Hotel" class="map-btn" target="_blank">🗺️ 飯店導航</a>
                 <button class="btn" onclick="addStamp(0)">點我蓋章：抵達夢幻樂園</button>
             </div>
         </div>
 
-        <div id="day2" class="day-section hidden">
-            <div class="tour-day">第二天：尊榮禮遇・太平山璀璨明珠</div>
+        <div id="day2" class="tab-section hidden">
+            <div class="tour-day">第二天：尊榮禮遇・提早入園搶先玩</div>
             <div class="timeline-item card">
-                <span class="time-tag">08:00</span><span class="item-title">🍳 早餐：好萊塢酒店主廚餐廳</span>
-                <p>享用精緻早餐，為今日的「提早入園」補充滿滿活力。</p>
+                <span class="time-tag">08:00</span><span class="item-title">🍳 早餐：好萊塢酒店</span>
+                <p>享用完早餐後，搭乘接駁專車前往樂園門口。</p>
             </div>
             <div class="timeline-item card">
-                <span class="time-tag">09:30</span><span class="item-title">✨ 搶先：提早入園券（Magic Hour）</span>
-                <p>持券搶先入園，直奔【魔雪奇緣世界】享受無人排隊的夢幻體驗。</p>
+                <span class="time-tag">09:30</span><span class="item-title">❄️ 搶先：持提早入園券進場</span>
+                <p>利用尊榮禮遇，率先進入【魔雪奇緣世界】享受無人排隊時光。</p>
                 <div class="info-box">
-                    ❄️ <strong>必衝：</strong> 魔雪奇緣之旅、雪嶺滑雪橇。<br>
-                    🎭 <strong>14:30</strong> 迪士尼魔法書房劇場演出。
+                    🎭 <strong>必看：</strong> 14:30 迪士尼魔法書房劇場。
                 </div>
             </div>
             <div class="timeline-item card">
-                <span class="time-tag">15:00</span><span class="item-title">🏨 移動：金域假日酒店入住</span>
-                <p>告別迪士尼，移動至尖沙咀鬧區飯店辦理入住。</p>
-                <a href="https://www.google.com/maps/dir/Disney's+Hollywood+Hotel,+Hong+Kong+Disneyland+Resort,+Magic+Road,+Lantau+Island,+Hong+Kong/Holiday+Inn+Golden+Mile+Hong+Kong+by+IHG,+50+Nathan+Road,+Tsim+Sha+Tsui,+Hong+Kong/data=!4m14!4m13!1m5!1m1!19sChIJ85WXXvLiAzQRjkXspFD_7ok!2m2!1d114.037334!2d22.309186999999998!1m5!1m1!19sChIJ8SgJDvIABDQRgA6YPZc8epg!2m2!1d114.1727739!2d22.2967855!3e0" class="map-btn" target="_blank">📍 前往尖沙咀</a><span class="time-badge">🚗 26min</span>
-            </div>
-            <div class="timeline-item card">
-                <span class="time-tag">18:00</span><span class="item-title">🚠 絕景：太平山頂纜車夜景</span>
-                <p>搭乘第六代纜車登上山頂，飽覽維多利亞港之夜。</p>
+                <span class="time-tag">18:00</span><span class="item-title">🚠 絕景：太平山纜車夜景</span>
+                <p>入住金域假日酒店後，飽覽維多利亞港夜色。</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Holiday+Inn+Golden+Mile" class="map-btn" target="_blank">🗺️ 飯店位置</a>
                 <button class="btn" onclick="addStamp(1)">點我蓋章：幸運木馬章</button>
             </div>
         </div>
 
-        <div id="day3" class="day-section hidden">
-            <div class="tour-day">第三天：海洋探險・動物明星見面會</div>
+        <div id="day3" class="tab-section hidden">
+            <div class="tour-day">第三天：海洋探險・探訪國寶熊貓</div>
             <div class="timeline-item card">
                 <span class="time-tag">10:00</span><span class="item-title">🐬 探訪：香港海洋公園</span>
-                <p>搭乘港鐵直達海洋公園，探訪國寶大熊貓與精彩動物秀。</p>
+                <p>全日海洋公園行程，觀賞精彩表演與大熊貓雙胞胎。</p>
                 <div class="info-box">
-                    🐼 <strong>必看：</strong> 11:00 探訪大熊貓盈盈、樂樂與雙胞胎寶寶。<br>
-                    🎭 <strong>14:00</strong> 海洋劇場「海豚探秘」表演。<br>
-                    🐧 <strong>15:15</strong> 企鵝餵食與互動秀。
+                    🎭 <strong>表演：</strong> 14:00 海洋劇場「海豚探秘」。
                 </div>
-                <a href="https://www.google.com/maps/dir/Holiday+Inn+Golden+Mile+Hong+Kong+by+IHG,+50+Nathan+Road,+Tsim+Sha+Tsui,+Hong+Kong/Ocean+Park,+Aberdeen,+Hong+Kong/data=!4m14!4m13!1m5!1m1!19sChIJ8SgJDvIABDQRgA6YPZc8epg!2m2!1d114.1727739!2d22.2967855!1m5!1m1!19sChIJ4SEGMiQABDQRRhn7SYWq0fM!2m2!1d114.1757239!2d22.2466607!3e3" class="map-btn" target="_blank">🧭 導航至海洋公園</a><span class="time-badge">🚇 30min</span>
                 <button class="btn" onclick="addStamp(3)">點我蓋章：海洋小隊長章</button>
             </div>
         </div>
 
-        <div id="day4" class="day-section hidden">
-            <div class="tour-day">第四天：豐盛滿載・馬年開春好運來</div>
+        <div id="day4" class="tab-section hidden">
+            <div class="tour-day">第四天：豐盛滿載・平安賦歸</div>
             <div class="timeline-item card">
-                <span class="time-tag">09:30</span><span class="item-title">🛍️ 掃貨：尖沙咀伴手禮補貨</span>
-                <p>最後衝刺珍妮曲奇、蝴蝶酥，滿載而歸。</p>
-            </div>
-            <div class="timeline-item card">
-                <span class="time-tag">11:30</span><span class="item-title">🚕 出發：香港國際機場</span>
-                <p>辦理登機，將馬年的福氣與回憶裝滿行李。</p>
-                <a href="https://www.google.com/maps/dir/Holiday+Inn+Golden+Mile+Hong+Kong+by+IHG,+50+Nathan+Road,+Tsim+Sha+Tsui,+Hong+Kong/Hong+Kong+International+Airport,+1+Sky+Plaza+Road,+Chek+Lap+Kok,+Hong+Kong/data=!4m14!4m13!1m5!1m1!19sChIJ8SgJDvIABDQRgA6YPZc8epg!2m2!1d114.1727739!2d22.2967855!1m5!1m1!19sChIJncZGzPPiAzQRnjaSGIKQ9fk!2m2!1d113.91372829999999!2d22.3134736!3e0" class="map-btn" target="_blank">🧭 導航至機場</a><span class="time-badge">🚗 27min</span>
+                <span class="time-tag">09:30</span><span class="item-title">🛍️ 掃貨：尖沙咀伴手禮</span>
+                <p>珍妮曲奇最後補貨，滿載馬年福氣回家。</p>
             </div>
             <div class="timeline-item card">
                 <span class="time-tag">15:20</span><span class="item-title">🏠 抵台：結束精彩香港行</span>
-                <p>長榮 BR868 抵達桃園，期待下一趟冒險！</p>
+                <p>搭乘長榮 BR868 抵達桃園，期待下次再見！</p>
                 <button class="btn" onclick="addStamp(6)">點我蓋章：冒險成功章</button>
+            </div>
+        </div>
+
+        <div id="day5" class="tab-section hidden">
+            <div class="card" style="background: #E8F5E9; border-color: #2E7D32;">
+                <h3 style="color: #2E7D32; margin-top:0;">💰 冒險錢包 (1 HKD = 4 TWD)</h3>
+                <label>項目名稱</label>
+                <input type="text" id="expNote" class="input-box" placeholder="例如：迪士尼爆米花">
+                <label>港幣金額 (HKD)</label>
+                <input type="number" id="expAmt" class="input-box" placeholder="例如：50">
+                <button class="btn" style="background:#2E7D32; color:white; border:none;" onclick="saveExp()">📝 存入帳單</button>
+                
+                <div style="margin-top: 20px;">
+                    <strong style="color: #2E7D32;">歷史帳單：</strong>
+                    <div id="expList" style="margin-top: 10px;"></div>
+                </div>
+                
+                <div style="text-align: right; font-weight: bold; border-top: 2px solid #2E7D32; padding-top: 15px; margin-top: 15px; font-size: 1.2em;">
+                    總花費：<span id="totalTwd" style="color: #D32F2F;">0</span> TWD
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="card">
-        <h3>📜 探險隊榮譽榜</h3>
-        <div class="stamp-grid" id="stampBox">
+    <div id="stamp-section" class="card">
+        <h3 style="margin-top:0;">📜 探險隊榮譽榜 (集章)</h3>
+        <div class="stamp-grid">
             <div class="stamp"><img src="fantasy castle.png"></div>
             <div class="stamp"><img src="horse.png"></div>
             <div class="stamp"><img src="cable car.png"></div>
@@ -178,26 +178,21 @@
         </div>
     </div>
 
-    <div class="card">
-        <h3>💰 冒險錢包 (1 HKD = 4 TWD)</h3>
-        <input type="text" id="expNote" class="input-box" placeholder="買了什麼戰利品？">
-        <input type="number" id="expAmt" class="input-box" placeholder="港幣金額 HKD">
-        <button class="btn" style="background:#E1F5FE;" onclick="saveExp()">📝 存入帳單</button>
-        <div id="expList" style="margin-top: 15px;"></div>
-        <div style="text-align: right; font-weight: bold; border-top: 1px dashed #ccc; padding-top: 10px; margin-top: 10px;">
-            總額：<span id="totalTwd" style="color: #D32F2F; font-size: 1.2em;">0</span> TWD
-        </div>
-    </div>
-
     <div id="stamp-overlay"><img id="active-stamp-img" src="" class="anim-img"></div>
     <audio id="stamp-sound" src="https://assets.mixkit.co/active_storage/sfx/2041/2041-preview.mp3" preload="auto"></audio>
 
     <script>
-        function setDay(d) {
-            document.querySelectorAll('.day-section').forEach((s, i) => s.classList.toggle('hidden', i+1 !== d));
-            document.querySelectorAll('.tab').forEach((t, i) => t.classList.toggle('active', i+1 === d));
+        // 分頁切換邏輯
+        function setTab(idx) {
+            // 切換分頁內容
+            document.querySelectorAll('.tab-section').forEach((s, i) => s.classList.toggle('hidden', i+1 !== idx));
+            // 切換按鈕狀態
+            document.querySelectorAll('.tab').forEach((t, i) => t.classList.toggle('active', i+1 === idx));
+            // 如果是錢包分頁，隱藏集章冊
+            document.getElementById('stamp-section').classList.toggle('hidden', idx === 5);
         }
 
+        // 集章邏輯
         let stamps = JSON.parse(localStorage.getItem('hk_stamps')) || [];
         const stampPaths = ["fantasy castle.png", "horse.png", "cable car.png", "ocean park.png", "shopping.png", "cookie.png", "airplane.png", "hidden_master.png"];
 
@@ -227,13 +222,14 @@
             }
         }
 
+        // 記帳邏輯
         let expData = JSON.parse(localStorage.getItem('hk_exp')) || [];
         function showExp() {
             const list = document.getElementById('expList');
             let sum = 0; list.innerHTML = '';
             expData.forEach(e => {
                 sum += e.amt * 4;
-                list.innerHTML += `<div style="display:flex; justify-content:space-between; margin-bottom:5px;"><span>· ${e.note}</span><span>NT$ ${e.amt*4}</span></div>`;
+                list.innerHTML += `<div style="display:flex; justify-content:space-between; margin-bottom:8px; padding-bottom:5px; border-bottom:1px dashed #ccc;"><span>· ${e.note}</span><span>NT$ ${e.amt*4}</span></div>`;
             });
             document.getElementById('totalTwd').innerText = sum.toLocaleString();
         }
@@ -246,8 +242,10 @@
                 document.getElementById('expNote').value = '';
                 document.getElementById('expAmt').value = '';
                 showExp();
+                alert("已存入錢包！");
             }
         }
+
         updateStamps(); showExp();
     </script>
 </body>
