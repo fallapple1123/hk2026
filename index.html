@@ -12,6 +12,7 @@
             --disney-blue: #004B8D;
             --text: #5D4037;
             --line: 3px solid #004B8D;
+            --accent: #E91E63;
         }
 
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; font-family: 'Noto Sans TC', sans-serif !important; }
@@ -30,25 +31,33 @@
         .flight-row { display: flex; justify-content: space-between; align-items: center; }
 
         .tabs { display: flex; gap: 6px; margin-bottom: 15px; overflow-x: auto; padding: 5px; scrollbar-width: none; }
-        .tab { flex-shrink: 0; padding: 12px 18px; border: var(--line); border-radius: 50px; text-align: center; background: white; cursor: pointer; font-weight: 700; color: var(--disney-blue); font-size: 0.95em; }
+        .tab { flex-shrink: 0; padding: 12px 18px; border: var(--line); border-radius: 50px; text-align: center; background: white; cursor: pointer; font-weight: 700; color: var(--disney-blue); font-size: 0.95em; transition: 0.2s; }
         .tab.active { background: var(--disney-gold); transform: scale(1.05); }
 
         .tour-day { background: var(--disney-blue); color: white; padding: 3px 10px; border-radius: 5px; font-size: 0.8em; margin-bottom: 8px; display: inline-block; }
-        .time-tag { background: #E91E63; color: white; padding: 2px 8px; border-radius: 5px; font-size: 0.85em; font-weight: 700; margin-right: 8px; }
+        .time-tag { background: var(--accent); color: white; padding: 2px 8px; border-radius: 5px; font-size: 0.85em; font-weight: 700; margin-right: 8px; }
+        
         .info-box { background: #E3F2FD; border: 1px solid var(--disney-blue); border-radius: 12px; padding: 12px; margin-top: 8px; font-size: 0.85em; line-height: 1.6; }
-        .food-box { background: #FFF3E0; border: 1px solid #FF9800; border-radius: 12px; padding: 10px; margin-top: 8px; font-size: 0.85em; }
+        .food-box { background: #FFF3E0; border: 1px solid #FF9800; border-radius: 12px; padding: 12px; margin-top: 8px; font-size: 0.85em; }
+        .gift-box { background: #F3E5F5; border: 1px solid #7B1FA2; border-radius: 12px; padding: 12px; margin-top: 8px; font-size: 0.85em; }
 
         .timeline-item { border-left: 3px dotted var(--disney-blue); padding-left: 20px; position: relative; margin-bottom: 20px; }
         .timeline-item::before { content: '🌟'; position: absolute; left: -14px; top: 0; font-size: 18px; }
         .item-title { font-weight: 700; color: var(--disney-blue); font-size: 1.05em; display: block; margin-bottom: 8px; }
 
         .stamp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
-        .stamp { aspect-ratio: 1; border: 2.5px dashed #CCC; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #fdfdfd; overflow: hidden; filter: grayscale(1); }
+        .stamp { aspect-ratio: 1; border: 2.5px dashed #CCC; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #fdfdfd; overflow: hidden; filter: grayscale(1); transition: 0.3s; }
         .stamp img { width: 85%; height: 85%; object-fit: contain; }
         .stamp.got { filter: grayscale(0); border: 3px solid var(--disney-gold); background: #FFFDE7; animation: pop-in 0.4s forwards; }
 
-        .btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 14px; margin-top: 15px; background: var(--disney-gold); border: var(--line); border-radius: 15px; font-weight: 700; cursor: pointer; color: var(--disney-blue); }
+        .btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 14px; margin-top: 15px; background: var(--disney-gold); border: var(--line); border-radius: 15px; font-weight: 700; cursor: pointer; color: var(--disney-blue); font-size: 1em; }
         .input-box { width: 100%; padding: 14px; border: 2px solid var(--disney-blue); border-radius: 12px; margin-bottom: 10px; font-size: 1em; background: #fff; }
+        
+        #stamp-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 10000; }
+        .anim-img { width: 220px; height: 220px; opacity: 0; }
+        .show-stamp .anim-img { animation: stamp-down 0.6s ease-out forwards; }
+        @keyframes stamp-down { 0% { transform: scale(5) rotate(-20deg); opacity: 0; } 50% { transform: scale(1) rotate(0deg); opacity: 1; } 100% { transform: scale(1.1) rotate(10deg); opacity: 0; } }
+        @keyframes pop-in { 0% { transform: scale(0); } 100% { transform: scale(1) rotate(8deg); } }
         .hidden { display: none; }
     </style>
 </head>
@@ -82,15 +91,20 @@
             <div class="timeline-item card">
                 <span class="time-tag">09:00</span><span class="item-title">✈️ 抵港：迪士尼好萊塢酒店</span>
                 <p>專車送往酒店寄放行李。</p>
+            </div>
+            <div class="timeline-item card">
+                <span class="time-tag">18:00</span><span class="item-title">🍽 晚餐：樂園內星級享用</span>
                 <div class="food-box">
-                    🍽 <strong>必吃推薦：</strong> 晶荷軒「迪士尼造型點心」。
+                    🍴 <strong>樂園內中式推薦：</strong><br>
+                    • <strong>廣場飯店 (Plaza Inn)：</strong> 美心集團經營，位於大街，提供經典粵菜，環境優雅最推薦。<br>
+                    • <strong>皇室宴會廳：</strong> 位於幻想世界，有中式燒味飯與點心，裝潢很有公主風，小孩會很喜歡。
                 </div>
             </div>
             <div class="timeline-item card">
                 <span class="item-title">🏰 迪士尼攻略 Day 1</span>
                 <div class="info-box">
-                    🔥 <strong>必玩：</strong> 魔雪奇緣之旅、雪嶺滑雪橇。<br>
-                    ✨ <strong>表演：</strong> 13:00 遊行 / 20:00 煙火。
+                    🔥 <strong>必玩：</strong> 魔雪奇緣之旅（Frozen Ever After）、雪嶺滑雪橇。<br>
+                    ✨ <strong>表演：</strong> 13:00 米奇遊行 / 20:00 Momentous 煙火秀。
                 </div>
                 <button class="btn" onclick="addStamp(0)">點我蓋章：抵達夢幻樂園</button>
             </div>
@@ -99,26 +113,23 @@
         <div id="day2" class="tab-section hidden">
             <div class="tour-day">2/20 第二天：尊榮搶先衝</div>
             <div class="timeline-item card">
-                <span class="time-tag">07:30</span><span class="item-title">🍳 早餐：好萊塢酒店</span>
-                <p>悠閒享用早餐，準備今日的尊榮挑戰。</p>
+                <span class="time-tag">07:30</span><span class="item-title">🍳 早餐：好萊塢酒店主廚餐廳</span>
+                <p>悠閒享用早餐。<strong>翠樂庭餐廳</strong>可與明星合照。</p>
             </div>
             <div class="timeline-item card">
                 <span class="time-tag">08:30</span><span class="item-title">🚌 出發：樂園衝刺</span>
-                <p>搭乘接駁專車前往樂園大門。</p>
+                <p>搭乘飯店接駁車前往樂園大門。</p>
             </div>
             <div class="timeline-item card">
                 <span class="time-tag">09:30</span><span class="item-title">❄️ 搶先：提早入園券（Early Entry）</span>
-                <p>持券搶先入園，直奔【魔雪奇緣世界】享受無人排隊時光。</p>
-                <div class="info-box">🎭 <strong>14:30</strong> 迪士尼魔法書房劇場演出。</div>
+                <p>直奔魔雪奇緣世界，享受 1 小時的尊榮時光。</p>
             </div>
             <div class="timeline-item card">
                 <span class="time-tag">15:00</span><span class="item-title">🚕 移動：尖沙咀金域假日酒店</span>
-                <p>搭乘紅色的士前往市區飯店辦理入住。</p>
                 <span style="color:#D32F2F; font-size:0.85em; font-weight:bold;">🚕 預計車資：HK$230</span>
             </div>
             <div class="timeline-item card">
                 <span class="time-tag">18:00</span><span class="item-title">🚠 絕景：太平山纜車夜景</span>
-                <p>搭乘的士前往中環。 <span style="color:#D32F2F; font-weight:bold;">🚕 車資約 HK$120</span></p>
                 <button class="btn" onclick="addStamp(1)">點我蓋章：幸運木馬章</button>
             </div>
         </div>
@@ -127,28 +138,31 @@
             <div class="tour-day">2/21 第三天：探險與盛宴</div>
             <div class="timeline-item card">
                 <span class="time-tag">10:00</span><span class="item-title">🐬 香港海洋公園大遊蹤</span>
-                <p>全日探訪大熊貓雙胞胎與海洋表演。</p>
-                <div class="info-box">
-                    🐼 <strong>必看：</strong> 貓熊寶寶樂樂盈盈。<br>
-                    🎭 <strong>14:00</strong> 海洋劇場「海豚探秘」。
-                </div>
-                <button class="btn" onclick="addStamp(3)">點我蓋章：海洋小隊長章</button>
+                <p>必看：熊貓寶寶樂樂盈盈與雙胞胎寶寶。</p>
             </div>
             <div class="timeline-item card" style="background:#FFF3E0; border-color:#FF9800;">
-                <span class="time-tag">18:30</span><span class="item-title">🥢 預約：蓮香樓 (尖沙咀)</span>
-                <p><strong>預約 7 位</strong>。品嚐傳統港式懷舊晚宴。</p>
+                <span class="time-tag">18:30</span><span class="item-title">🥢 晚宴：蓮香樓 (尖沙咀)</span>
+                <p><strong>預約 7 位</strong>。體驗經典港式懷舊晚宴。</p>
             </div>
+            <div class="timeline-item card">
+                <div class="food-box">
+                    🍮 <strong>必吃甜點：</strong> 佳佳甜品（芝麻糊）、義順牛奶公司（燉奶）。
+                </div>
+            </div>
+            <button class="btn" onclick="addStamp(3)">點我蓋章：海洋小隊長章</button>
         </div>
 
         <div id="day4" class="tab-section hidden">
-            <div class="tour-day">2/22 第四天：平安賦歸</div>
+            <div class="tour-day">2/22 第四天：伴手禮最後衝刺</div>
             <div class="timeline-item card">
-                <span class="time-tag">09:30</span><span class="item-title">🛍️ 掃貨：尖沙咀伴手禮</span>
-                <p>珍妮曲奇最後補貨。</p>
+                <span class="time-tag">09:30</span><span class="item-title">🛍️ 掃貨：尖沙咀名產</span>
+                <div class="gift-box">
+                    🎁 <strong>清單：</strong> 珍妮曲奇（金域假日旁）、皇玥蝴蝶酥、恆香老婆餅。
+                </div>
             </div>
             <div class="timeline-item card">
                 <span class="time-tag">13:30</span><span class="item-title">✈️ 歸途：飛往台北</span>
-                <p>搭乘 BR868 歸國，預計 15:20 抵台。</p>
+                <p>帶著滿滿回憶與戰利品歸國！</p>
                 <button class="btn" onclick="addStamp(6)">點我蓋章：冒險成功章</button>
             </div>
         </div>
@@ -161,7 +175,7 @@
                 <button class="btn" style="background:#2E7D32; color:white; border:none;" onclick="saveExp()">📝 存入帳單</button>
                 <div id="expList" style="margin-top: 15px;"></div>
                 <div style="text-align: right; font-weight: bold; border-top: 2px solid #2E7D32; padding-top: 15px; margin-top: 15px;">
-                    總花費：<span id="totalTwd" style="color: #D32F2F;">0</span> TWD
+                    總計：<span id="totalTwd" style="color: #D32F2F;">0</span> TWD
                 </div>
             </div>
         </div>
@@ -169,7 +183,7 @@
 
     <div id="stamp-section" class="card">
         <h3 style="margin-top:0;">📜 探險隊榮譽榜</h3>
-        <div class="stamp-grid">
+        <div class="stamp-grid" id="stampBox">
             <div class="stamp"><img src="fantasy castle.png"></div>
             <div class="stamp"><img src="horse.png"></div>
             <div class="stamp"><img src="cable car.png"></div>
@@ -195,8 +209,8 @@
         const stampPaths = ["fantasy castle.png", "horse.png", "cable car.png", "ocean park.png", "shopping.png", "cookie.png", "airplane.png", "hidden_master.png"];
 
         function updateStamps() {
-            const items = document.querySelectorAll('.stamp');
-            stamps.forEach(idx => { if (items[idx]) items[idx].classList.add('got'); });
+            const items = document.querySelectorAll('.stamp img');
+            stamps.forEach(idx => { if (items[idx]) items[idx].parentElement.classList.add('got'); });
         }
 
         function addStamp(idx) {
@@ -226,10 +240,11 @@
             let sum = 0; list.innerHTML = '';
             expData.forEach(e => {
                 sum += e.amt * 4;
-                list.innerHTML += `<div style="display:flex; justify-content:space-between; margin-bottom:5px;"><span>· ${e.note}</span><span>NT$ ${e.amt*4}</span></div>`;
+                list.innerHTML += `<div style="display:flex; justify-content:space-between; margin-bottom:5px; padding: 5px; border-bottom: 1px dashed #eee;"><span>· ${e.note}</span><span>NT$ ${e.amt*4}</span></div>`;
             });
             document.getElementById('totalTwd').innerText = sum.toLocaleString();
         }
+
         function saveExp() {
             const note = document.getElementById('expNote').value;
             const amt = document.getElementById('expAmt').value;
@@ -239,7 +254,7 @@
                 document.getElementById('expNote').value = '';
                 document.getElementById('expAmt').value = '';
                 showExp();
-                alert("已存入錢包！");
+                alert("已成功存入錢包！");
             }
         }
         updateStamps(); showExp();
