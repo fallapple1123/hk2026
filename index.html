@@ -14,7 +14,7 @@
             --line: 2.5px solid #5D4037;
         }
 
-        /* 2. 全域強制統一使用 Noto Sans TC */
+        /* 全域字體強制統一 */
         * { 
             box-sizing: border-box; 
             -webkit-tap-highlight-color: transparent; 
@@ -27,52 +27,54 @@
             background-size: 24px 24px;
             color: var(--text); 
             margin: 0; padding: 15px; 
-            letter-spacing: 0.5px;
+            font-weight: 500;
         }
 
-        h1, h2, h3 { 
-            text-align: center; 
-            margin: 15px 0; 
-            font-weight: 700;
-            color: var(--text);
-        }
+        h1, h2, h3 { text-align: center; margin: 15px 0; font-weight: 700; }
 
-        /* 手繪感卡片設計保持不變 */
         .card {
             background: white; border: var(--line); border-radius: 25px 15px 30px 20px / 15px 30px 20px 25px;
             padding: 15px; margin-bottom: 20px; box-shadow: 4px 4px 0px rgba(93, 64, 55, 0.1);
         }
 
-        /* ✈️ 航班資訊區 */
-        .flight-card { background: #fef9e7; border: 2px dashed var(--text); padding: 12px; border-radius: 18px; margin-bottom: 20px; }
-        .flight-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.9em; }
+        /* ✈️ 航班卡片 */
+        .flight-card { background: #fef9e7; border: 2px dashed var(--text); padding: 15px; border-radius: 18px; margin-bottom: 20px; }
+        .flight-row { display: flex; justify-content: space-between; align-items: center; }
 
-        /* 分頁按鈕 */
+        /* 分頁 */
         .tabs { display: flex; gap: 8px; margin-bottom: 15px; overflow-x: auto; }
         .tab { flex: 1; padding: 12px; border: var(--line); border-radius: 15px; text-align: center; background: var(--a-blue); cursor: pointer; font-weight: 700; min-width: 65px; }
-        .tab.active { background: var(--p-pink); transform: scale(1.02); }
+        .tab.active { background: var(--p-pink); }
 
-        /* 行程時間軸 */
+        /* 行程 */
         .timeline-item { border-left: 2px dashed var(--text); padding-left: 20px; position: relative; margin-bottom: 15px; }
         .timeline-item::before { content: '🐎'; position: absolute; left: -14px; top: 0; background: white; border-radius: 50%; padding: 2px; }
 
-        .item-title { font-weight: 700; color: #D32F2F; font-size: 1.1em; display: block; margin-bottom: 5px; }
-
-        /* 集章冊樣式 */
+        /* 集章冊 */
         .stamp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-        .stamp { aspect-ratio: 1; border: 2.5px dashed #CCC; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #f9f9f9; overflow: hidden; filter: grayscale(1); transition: 0.3s; }
+        .stamp { aspect-ratio: 1; border: 2.5px dashed #CCC; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #f9f9f9; overflow: hidden; filter: grayscale(1); }
         .stamp img { width: 85%; height: 85%; object-fit: contain; }
         .stamp.got { filter: grayscale(0); border: 2.5px solid var(--p-pink); background: #FFF0F0; animation: pop-in 0.4s forwards; }
 
-        /* 互動動畫特效 */
-        #stamp-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; align-items: center; justify-content: center; z-index: 9999; }
-        .anim-img { width: 200px; height: 200px; animation: stamp-down 0.6s forwards; }
+        /* 🔴 修正後的蓋章動畫特效層 */
+        #stamp-overlay { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 10000; 
+        }
+        .anim-img { width: 220px; height: 220px; opacity: 0; }
+        
+        /* 動畫實作 */
+        .show-stamp .anim-img { animation: stamp-down 0.6s ease-out forwards; }
 
-        @keyframes stamp-down { 0% { transform: scale(5) rotate(-15deg); opacity: 0; } 70% { transform: scale(1) rotate(0deg); opacity: 1; } 100% { transform: scale(1.1) rotate(5deg); opacity: 0; } }
+        @keyframes stamp-down {
+            0% { transform: scale(5) rotate(-20deg); opacity: 0; }
+            50% { transform: scale(1) rotate(0deg); opacity: 1; }
+            80% { transform: scale(1) rotate(0deg); opacity: 1; }
+            100% { transform: scale(1.1) rotate(10deg); opacity: 0; }
+        }
         @keyframes pop-in { 0% { transform: scale(0); } 100% { transform: scale(1) rotate(8deg); } }
 
         .btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px; margin-top: 8px; background: var(--p-pink); border: var(--line); border-radius: 12px; font-weight: 700; cursor: pointer; text-decoration: none; color: inherit; }
-        .input-box { width: 100%; padding: 12px; border: var(--line); border-radius: 12px; margin-bottom: 8px; font-size: 1em; }
         .hidden { display: none; }
     </style>
 </head>
@@ -83,9 +85,9 @@
     <div class="flight-card">
         <h3>✈️ 航班資訊</h3>
         <div class="flight-row">
-            <div><strong>2/19 去程 BR891</strong><br><small>07:00 🛫 09:00</small></div>
+            <div><strong>2/19 BR891</strong><br><small>07:00 🛫 09:00</small></div>
             <div style="font-size: 1.5em;">✈️</div>
-            <div style="text-align: right;"><strong>2/22 回程 BR868</strong><br><small>13:30 🛫 15:20</small></div>
+            <div style="text-align: right;"><strong>2/22 BR868</strong><br><small>13:30 🛫 15:20</small></div>
         </div>
     </div>
 
@@ -99,47 +101,34 @@
     <div id="itinerary">
         <div id="day1" class="day-section">
             <div class="timeline-item card">
-                <span class="item-title">抵達香港 & 迪士尼好萊塢酒店</span>
-                <p>2/19 班機抵達後直接前往酒店寄放行李。</p>
+                <strong>抵達香港 & 迪士尼好萊塢酒店</strong>
+                <p>2/19 班機抵達後，直接前往酒店寄放行李。</p>
                 <button class="btn" onclick="addStamp(0)"><img src="fantasy castle.png" width="25" onerror="this.style.display='none'"> 蓋章：抵達冒險</button>
             </div>
             <div class="timeline-item card">
-                <span class="item-title">迪士尼樂園 Day 1</span>
-                <p>衝刺熱門設施，尋找馬年活動！</p>
+                <strong>迪士尼樂園 Day 1</strong>
+                <p>開始馬年冒險！</p>
             </div>
         </div>
-
         <div id="day2" class="day-section hidden">
             <div class="timeline-item card">
-                <span class="item-title">迪士尼樂園 Day 2</span>
-                <p>下午 15:00 離開前往金域假日酒店。</p>
+                <strong>迪士尼樂園 Day 2</strong>
+                <p>15:00 離開前往尖沙咀金域假日飯店。</p>
                 <button class="btn" onclick="addStamp(1)"><img src="horse.png" width="25" onerror="this.style.display='none'"> 蓋章：馬年木馬</button>
             </div>
-            <div class="timeline-item card">
-                <span class="item-title">18:00 太平山頂夜景</span>
-                <p>搭乘纜車欣賞絕美夜景。</p>
-                <button class="btn" onclick="addStamp(2)"><img src="cable car.png" width="25" onerror="this.style.display='none'"> 蓋章：太平山頂</button>
-            </div>
         </div>
-
         <div id="day3" class="day-section hidden">
             <div class="timeline-item card">
-                <span class="item-title">10:00 海洋公園全日遊</span>
-                <p>2/21 海洋冒險，看企鵝與搭纜車。</p>
+                <strong>2/21 海洋公園</strong>
+                <p>全日探險冒險。</p>
                 <button class="btn" onclick="addStamp(3)"><img src="ocean park.png" width="25" onerror="this.style.display='none'"> 蓋章：海洋冒險</button>
             </div>
         </div>
-
         <div id="day4" class="day-section hidden">
             <div class="timeline-item card">
-                <span class="item-title">伴手禮最後補貨</span>
-                <p>珍妮曲奇、蝴蝶酥衝刺！</p>
-                <button class="btn" onclick="addStamp(5)"><img src="cookie.png" width="25" onerror="this.style.display='none'"> 蓋章：戰利品</button>
-            </div>
-            <div class="timeline-item card">
-                <span class="item-title">13:30 回程歸途</span>
-                <p>2/22 搭乘 BR868 班機回台灣。</p>
-                <button class="btn" onclick="addStamp(6)"><img src="airplane.png" width="25" onerror="this.style.display='none'"> 蓋章：全集滿！</button>
+                <strong>最後補貨 & 機場</strong>
+                <p>搭乘 13:30 BR868 班機回台灣。</p>
+                <button class="btn" onclick="addStamp(6)"><img src="airplane.png" width="25" onerror="this.style.display='none'"> 蓋章：冒險成功！</button>
             </div>
         </div>
     </div>
@@ -158,18 +147,11 @@
         </div>
     </div>
 
-    <div class="card">
-        <h3>💰 冒險錢包 (1 HKD = 4 TWD)</h3>
-        <input type="text" id="expNote" class="input-box" placeholder="買了什麼？">
-        <input type="number" id="expAmt" class="input-box" placeholder="港幣金額 HKD">
-        <button class="btn" onclick="saveExp()">📝 存入帳單</button>
-        <div id="expList" style="margin-top: 15px;"></div>
-        <div style="text-align: right; font-weight: bold; border-top: 1px dashed #ccc; padding-top: 10px; margin-top: 10px;">
-            總額：<span id="totalTwd" style="color: #D32F2F; font-size: 1.2em;">0</span> TWD
-        </div>
-    </div>
+    <button onclick="resetData()" style="background:none; border:none; color:#ccc; width:100%; font-size:12px; margin-top:20px;">[ 清除紀錄重新測試 ]</button>
 
-    <div id="stamp-overlay"><img id="active-stamp-img" src="" class="anim-img"></div>
+    <div id="stamp-overlay">
+        <img id="active-stamp-img" src="" class="anim-img">
+    </div>
     <audio id="stamp-sound" src="https://assets.mixkit.co/active_storage/sfx/2012/2012-preview.mp3" preload="auto"></audio>
 
     <script>
@@ -185,55 +167,48 @@
             const items = document.querySelectorAll('.stamp');
             stamps.forEach(idx => { if (items[idx]) items[idx].classList.add('got'); });
             
+            // 隱藏章邏輯
             if (stamps.length >= 7 && !stamps.includes(7)) {
-                setTimeout(() => { alert("🎊 隱藏解鎖：馬年大冒險家！"); addStamp(7); }, 1200);
+                setTimeout(() => { addStamp(7); }, 1500);
             }
         }
 
         function addStamp(idx) {
+            // 如果已經集過了，就不再跑動畫 (為了測試您可以先點最下方的重置)
             if(!stamps.includes(idx)) {
                 const sound = document.getElementById('stamp-sound');
-                sound.currentTime = 0; sound.play();
                 const overlay = document.getElementById('stamp-overlay');
                 const animImg = document.getElementById('active-stamp-img');
+
+                // 播放音效
+                sound.currentTime = 0; sound.play();
+
+                // 顯示特效
                 animImg.src = stampPaths[idx];
                 overlay.style.display = 'flex';
+                overlay.classList.add('show-stamp');
 
                 setTimeout(() => {
                     overlay.style.display = 'none';
-                    stamps.push(idx);
-                    localStorage.setItem('hk_stamps', JSON.stringify(stamps));
-                    updateStamps();
-                    if (navigator.vibrate) navigator.vibrate(50);
+                    overlay.classList.remove('show-stamp');
+                    
+                    if (!stamps.includes(idx)) {
+                        stamps.push(idx);
+                        localStorage.setItem('hk_stamps', JSON.stringify(stamps));
+                        updateStamps();
+                    }
                 }, 600);
             }
         }
 
-        let expData = JSON.parse(localStorage.getItem('hk_exp')) || [];
-        function showExp() {
-            const list = document.getElementById('expList');
-            let sum = 0;
-            list.innerHTML = '';
-            expData.forEach(e => {
-                sum += e.amt * 4;
-                list.innerHTML += `<div style="display:flex; justify-content:space-between; margin-bottom:5px;"><span>· ${e.note}</span><span>NT$ ${e.amt*4}</span></div>`;
-            });
-            document.getElementById('totalTwd').innerText = sum.toLocaleString();
-        }
-        function saveExp() {
-            const note = document.getElementById('expNote').value;
-            const amt = document.getElementById('expAmt').value;
-            if(note && amt) {
-                expData.push({note, amt: parseFloat(amt)});
-                localStorage.setItem('hk_exp', JSON.stringify(expData));
-                document.getElementById('expNote').value = '';
-                document.getElementById('expAmt').value = '';
-                showExp();
+        function resetData() {
+            if(confirm("確定要清除所有集章紀錄嗎？")) {
+                localStorage.clear();
+                location.reload();
             }
         }
 
         updateStamps();
-        showExp();
     </script>
 </body>
 </html>
