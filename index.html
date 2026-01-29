@@ -36,8 +36,9 @@
         }
         .nav-tabs::-webkit-scrollbar { display: none; }
         .tab-btn {
-            flex-shrink: 0; padding: 10px 18px; border: none; border-radius: 50px;
+            flex: 1; min-width: 70px; padding: 10px 12px; border: none; border-radius: 50px;
             background: #f0f0f0; font-weight: 700; color: #777; transition: 0.3s; font-size: 0.9em;
+            text-align: center;
         }
         .tab-btn.active { background: var(--disney-gold); color: var(--disney-blue); transform: scale(1.05); }
 
@@ -73,35 +74,14 @@
             font-size: 0.8em; font-weight: 700; margin-top: 8px; margin-right: 5px;
         }
 
-        .btn-stamp-it {
+        .btn-wallet-add {
             width: 100%; padding: 14px; border-radius: 12px; border: none;
-            background: var(--disney-gold); color: var(--disney-blue);
-            font-weight: 700; font-size: 1em; cursor: pointer; margin-top: 12px;
-            box-shadow: 0 4px 0 #b79a00;
+            background: #2E7D32; color: white; font-weight: 700; font-size: 1em; 
+            cursor: pointer; margin-top: 12px; box-shadow: 0 4px 0 #1b5e20;
         }
-        .btn-stamp-it:active { transform: translateY(2px); box-shadow: 0 2px 0 #b79a00; }
-
-        .stamp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 5px; }
-        .stamp-slot {
-            background: white; aspect-ratio: 0.9; border-radius: 20px; border: 2.5px dashed #ccc;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            filter: grayscale(1); transition: 0.5s; padding: 15px; text-align: center;
-        }
-        .stamp-slot.got {
-            filter: grayscale(0); border: 3px solid var(--disney-gold); background: #FFFDE7;
-            transform: rotate(3deg); box-shadow: var(--card-shadow);
-        }
-        .stamp-slot img { width: 60%; margin-bottom: 10px; }
 
         .wallet-input { width: 100%; padding: 14px; border-radius: 10px; border: 1px solid #ccc; margin-bottom: 12px; font-size: 1em; }
         .expense-item { display: flex; justify-content: space-between; background: white; padding: 14px; border-radius: 12px; margin-bottom: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); font-size: 0.95em; }
-
-        #overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85);
-            display: none; align-items: center; justify-content: center; z-index: 10000;
-        }
-        .big-stamp-anim { width: 200px; transform: scale(4); opacity: 0; transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .big-stamp-anim.active { opacity: 1; transform: scale(1); }
 
         @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
     </style>
@@ -115,15 +95,14 @@
             <button class="tab-btn" onclick="switchTab(2)">Day 2</button>
             <button class="tab-btn" onclick="switchTab(3)">Day 3</button>
             <button class="tab-btn" onclick="switchTab(4)">Day 4</button>
-            <button class="tab-btn" onclick="switchTab(5)">📜 集章</button>
-            <button class="tab-btn" onclick="switchTab(6)">💰 錢包</button>
+            <button class="tab-btn" onclick="switchTab(5)">💰 錢包</button>
         </div>
     </div>
 
     <div class="flight-banner">
-        <div><span class="flight-no">2/19 BR891</span><br>07:00 ➔ 09:00</div>
+        <div><span class="flight-no">2/19 BR891</span><br>07:00 🛫 09:00</div>
         <div style="font-size: 1.5em;">✈️</div>
-        <div style="text-align: right;"><span class="flight-no">2/22 BR868</span><br>13:30 ➔ 15:20</div>
+        <div style="text-align: right;"><span class="flight-no">2/22 BR868</span><br>13:30 🛫 15:20</div>
     </div>
 
     <div class="container">
@@ -131,29 +110,28 @@
             <div class="timeline-card">
                 <span class="time-badge">04:30</span>
                 <div class="card-title">出發 ➔ 桃園機場</div>
-                <p>啟程展開新春夢想旅行，預計 05:30 抵達二航。</p>
+                <p>開啟夢想旅程，預計 05:30 抵達二航辦理手續。</p>
             </div>
             <div class="timeline-card" style="border-left-color: #4CAF50;">
                 <span class="time-badge" style="background:#4CAF50;">10:00</span>
                 <div class="card-title">🇭🇰 抵港 ➔ 尊榮專車</div>
-                <p><strong>7 人座私家專車已預約</strong>。由機場直抵迪士尼好萊塢酒店寄行李。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Disney+Hollywood+Hotel" class="map-btn" target="_blank">🗺️ 飯店導航</a>
+                <p>7 人座專車已預約，直達迪士尼好萊塢酒店寄放行李。</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=迪士尼好萊塢酒店" class="map-btn" target="_blank">🗺️ 飯店導航</a>
             </div>
             <div class="timeline-card">
                 <span class="time-badge">11:30</span>
-                <div class="card-title">🎡 迪士尼樂園：首日</div>
+                <div class="card-title">🎡 迪士尼樂園：首日冒險</div>
                 <div class="food-box">🍴 13:00 園內午餐：大街餐廳或廣場飯店</div>
                 <div class="strategy-box">
-                    <strong>首日推薦順序：</strong><br>
+                    <strong>推薦玩樂順序：</strong><br>
                     <span class="tag">小小世界</span> ➔ <span class="tag">小熊維尼</span> ➔ <span class="tag">巴斯光年</span> ➔ <span class="tag">角色拍照</span> ➔ <span class="tag">下午巡遊</span>
                 </div>
-                <div class="strategy-box" style="background:#FFF9C4;">✨ 20:00 煙火秀 (建議 19:15 前卡位)</div>
-                <button class="btn-stamp-it" onclick="handleStamp(0)">✨ 抵達夢幻國度</button>
+                <div class="strategy-box" style="background:#FFF9C4;">✨ 20:00 煙火秀 (19:15 建議卡位)</div>
             </div>
             <div class="timeline-card">
                 <span class="time-badge">20:30</span>
                 <div class="card-title">回飯店休息</div>
-                <p>結束首日冒險，返回好萊塢酒店補足體力。</p>
+                <p>返回飯店補足體力。</p>
             </div>
         </div>
 
@@ -161,17 +139,17 @@
             <div class="timeline-card">
                 <span class="time-badge">07:30</span>
                 <div class="card-title">飯店早餐</div>
-                <p>在好萊塢酒店享用元氣早餐。</p>
+                <p>好萊塢酒店早餐補給。</p>
             </div>
             <div class="timeline-card">
                 <span class="time-badge">08:00</span>
                 <div class="card-title">出發 ➔ 迪士尼樂園</div>
-                <p>提早前往入口卡位，準備搶先入園。</p>
+                <p>前往入口卡位，準備搶先入園。</p>
             </div>
             <div class="timeline-card" style="border-left-color: #03A9F4;">
                 <span class="time-badge" style="background:#03A9F4;">09:00</span>
                 <div class="card-title">❄️ 提早入園：魔雪奇緣</div>
-                <p>持提早入園券先衝「魔雪奇緣之旅」與「雪嶺滑雪橇」。</p>
+                <p>衝刺魔雪奇緣之旅與雪嶺滑雪橇。</p>
             </div>
             <div class="timeline-card">
                 <span class="time-badge">15:00</span>
@@ -181,28 +159,27 @@
             <div class="timeline-card">
                 <span class="time-badge">16:00</span>
                 <div class="card-title">飯店 Check-in + 休息</div>
-                <a href="https://www.google.com/maps/search/?api=1&query=Holiday+Inn+Golden+Mile+Hong+Kong" class="map-btn" target="_blank">🗺️ 飯店導航</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=香港金域假日酒店" class="map-btn" target="_blank">🗺️ 飯店導航</a>
             </div>
             <div class="timeline-card" style="border-left-color: #FF9800;">
                 <span class="time-badge" style="background:#FF9800;">17:40</span>
                 <div class="card-title">🏔️ 太平山頂：百萬夜景</div>
-                <p>17:00 搭的士 (約 HK$120) **直接攻頂**，避開纜車人潮。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=The+Peak+Tower+Hong+Kong" class="map-btn" target="_blank">🗺️ 山頂導航</a>
+                <p>17:00 搭的士 (約 HK$120) 直達山頂。欣賞絕美夜色。</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=太平山頂凌霄閣" class="map-btn" target="_blank">🗺️ 山頂導航</a>
                 <div class="food-box">
-                    🍜 <strong>山頂晚餐推薦：</strong><br>
-                    • 敏華冰廳(山頂店) <a href="https://www.google.com/maps/search/?api=1&query=Men+Wah+Bing+Teng+The+Peak" class="map-btn" target="_blank">🗺️</a><br>
-                    • 麥奀雲吞麵 <a href="https://www.google.com/maps/search/?api=1&query=Mak's+Noodle+The+Peak" class="map-btn" target="_blank">🗺️</a>
+                    🍜 <strong>山頂美食推薦：</strong><br>
+                    • 敏華冰廳(山頂店) <a href="https://www.google.com/maps/search/?api=1&query=敏華冰廳+山頂" class="map-btn" target="_blank">🗺️</a><br>
+                    • 麥奀雲吞麵 <a href="https://www.google.com/maps/search/?api=1&query=麥奀雲吞麵+山頂" class="map-btn" target="_blank">🗺️</a>
                 </div>
             </div>
             <div class="timeline-card">
                 <span class="time-badge">19:30</span>
                 <div class="card-title">🎭 杜莎夫人蠟像館</div>
-                <a href="https://www.google.com/maps/search/?api=1&query=Madame+Tussauds+Hong+Kong" class="map-btn" target="_blank">🗺️ 導航</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=杜莎夫人蠟像館+香港" class="map-btn" target="_blank">🗺️ 導航</a>
             </div>
             <div class="timeline-card">
                 <span class="time-badge">21:00</span>
                 <div class="card-title">返回飯店休息</div>
-                <button class="btn-stamp-it" onclick="handleStamp(1)">🏔️ 蓋章：百萬夜景</button>
             </div>
         </div>
 
@@ -210,43 +187,41 @@
             <div class="timeline-card">
                 <span class="time-badge">08:30</span>
                 <div class="card-title">早餐：Bolton Cafe</div>
-                <p>享用尖沙咀精緻早茶。 (更正連結)</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Bolton+Cafe+Tsim+Sha+Tsui" class="map-btn" target="_blank">🗺️ 早餐導航</a>
+                <p>尖沙咀質感早餐體驗。</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Bolton+Cafe+TST" class="map-btn" target="_blank">🗺️ 早餐導航</a>
             </div>
             <div class="timeline-card">
                 <span class="time-badge">09:30</span>
                 <div class="card-title">出發 ➔ 香港海洋公園</div>
-                <p>搭乘地鐵直達海洋公園，開啟冒險。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Ocean+Park+Hong+Kong" class="map-btn" target="_blank">🗺️ 公園導航</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=香港海洋公園" class="map-btn" target="_blank">🗺️ 公園導航</a>
                 <div class="strategy-box">
-                    🐼 <strong>海洋必衝：</strong>大熊貓雙胞胎 ➔ 海洋列車 ➔ 企鵝館 ➔ 14:00 海豚秀
+                    🐼 <strong>攻略：</strong>大熊貓雙胞胎 ➔ 海洋列車 ➔ 企鵝館 ➔ 14:00 海豚秀
                 </div>
-                <button class="btn-stamp-it" onclick="handleStamp(3)">🐬 蓋章：海洋專家</button>
             </div>
             <div class="timeline-card">
                 <span class="time-badge">17:30</span>
-                <div class="card-title">離園 ➔ 返回尖沙咀</div>
+                <div class="card-title">離園 ➔ 返回市區</div>
             </div>
             <div class="timeline-card" style="border-left-color: #4CAF50;">
                 <span class="time-badge" style="background:#4CAF50;">18:30</span>
                 <div class="card-title">🥢 晚宴：蓮香樓 (尖沙咀)</div>
-                <p><strong>已訂位：7 位</strong>。體驗老港懷舊飲茶。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Lin+Heung+Kui+Tsim+Sha+Tsui" class="map-btn" target="_blank">🗺️ 餐廳導航</a>
+                <p><strong>已訂位：7 位</strong>。體驗老港懷舊推車飲茶。</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=蓮香樓+尖沙咀" class="map-btn" target="_blank">🗺️ 餐廳導航</a>
             </div>
             <div class="timeline-card">
                 <span class="time-badge">20:00</span>
                 <div class="card-title">自由活動</div>
-                <p>尖沙咀彌敦道購物與海港城逛街。</p>
+                <p>尖沙咀周邊逛街。</p>
             </div>
             <div class="timeline-card" style="background:#FFFDE7;">
                 <div class="card-title">⚡ Pokemon Mezastar</div>
                 <p>海運大廈 SHOP OT G11 - JUMPIN GYM</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Ocean+Terminal+Pokemon+Mezastar" class="map-btn" target="_blank">🗺️ 導航</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=海運大廈+Pokemon+Mezastar" class="map-btn" target="_blank">🗺️ 導航</a>
             </div>
             <div class="gift-box">
-                🎁 <strong>Day 3 伴手禮推薦：</strong><br>
-                • 珍妮曲奇 <a href="https://www.google.com/maps/search/?api=1&query=Jenny+Bakery+Tsim+Sha+Tsui" class="map-btn">🗺️</a><br>
-                • 皇玥蝴蝶酥 <a href="https://www.google.com/maps/search/?api=1&query=Imperial+Patisserie+Tsim+Sha+Tsui" class="map-btn">🗺️</a>
+                🎁 <strong>今日伴手禮推薦：</strong><br>
+                • 珍妮曲奇 <a href="https://www.google.com/maps/search/?api=1&query=珍妮曲奇+尖沙咀" class="map-btn">🗺️</a><br>
+                • 皇玥蝴蝶酥 <a href="https://www.google.com/maps/search/?api=1&query=皇玥蝴蝶酥+尖沙咀" class="map-btn">🗺️</a>
             </div>
         </div>
 
@@ -254,63 +229,39 @@
             <div class="timeline-card">
                 <span class="time-badge">08:30</span>
                 <div class="card-title">早餐：華嫂冰室</div>
-                <p>朝聖最火紅的招牌番茄湯麵與豬扒包。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Waso+Cafe+Tsim+Sha+Tsui" class="map-btn" target="_blank">🗺️ 早餐導航</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=華嫂冰室+尖沙咀" class="map-btn" target="_blank">🗺️ 導航</a>
             </div>
             <div class="timeline-card">
-                <div class="card-title">🥧 伴手禮：Bakehouse 蛋塔</div>
-                <p>最後一站搶購神級排隊蛋塔。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Bakehouse+Tsim+Sha+Tsui" class="map-btn" target="_blank">🗺️ 蛋塔導航</a>
+                <div class="card-title">🎁 伴手禮最後掃貨</div>
+                <p>Bakehouse 蛋塔</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Bakehouse+尖沙咀" class="map-btn" target="_blank">🗺️ 導航</a>
             </div>
             <div class="timeline-card">
                 <span class="time-badge">10:30</span>
                 <div class="card-title">出發 ➔ 香港機場 (HKIA)</div>
-                <p>搭乘專車前往機場辦理登機退稅。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport" class="map-btn" target="_blank">🗺️ 機場導航</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=香港國際機場" class="map-btn" target="_blank">🗺️ 機場導航</a>
             </div>
             <div class="timeline-card">
                 <span class="time-badge">13:30</span>
-                <div class="card-title">✈️ 歸途：長榮 BR868</div>
-                <p>帶著滿載的戰利品與驚喜，平安返抵桃園。</p>
-                <button class="btn-stamp-it" onclick="handleStamp(6)">🏆 蓋章：冒險成功</button>
+                <div class="card-title">✈️ 歸途：BR868</div>
+                <p>平安賦歸，結束夢幻旅程。</p>
             </div>
         </div>
 
         <div id="section-5" class="day-section">
-            <div class="timeline-card" style="border-left:none; text-align:center; background:#FFFDE7;">
-                <div class="card-title">📜 冒險集章冊</div>
-            </div>
-            <div class="stamp-grid" id="stampSheet">
-                <div class="stamp-slot"><img src="fantasy castle.png"><span class="stamp-name">迪士尼</span></div>
-                <div class="stamp-slot"><img src="horse.png"><span class="stamp-name">太平山</span></div>
-                <div class="stamp-slot"><img src="cable car.png"><span class="stamp-name">山頂纜車</span></div>
-                <div class="stamp-slot"><img src="ocean park.png"><span class="stamp-name">海洋公園</span></div>
-                <div class="stamp-slot"><img src="shopping.png"><span class="stamp-name">尖沙咀</span></div>
-                <div class="stamp-slot"><img src="cookie.png"><span class="stamp-name">伴手禮</span></div>
-                <div class="stamp-slot"><img src="airplane.png"><span class="stamp-name">平安歸國</span></div>
-                <div class="stamp-slot"><img src="hidden_master.png"><span class="stamp-name">隱藏大師</span></div>
-            </div>
-        </div>
-
-        <div id="section-6" class="day-section">
             <div class="timeline-card" style="border-left-color: #2E7D32; background: #E8F5E9;">
                 <div class="card-title" style="color:#2E7D32;">💰 冒險錢包</div>
                 <input type="text" id="expName" class="wallet-input" placeholder="項目內容">
-                <input type="number" id="expAmt" class="wallet-input" placeholder="金額 (HKD)">
-                <button class="btn-stamp-it" style="background:#2E7D32; color:white;" onclick="addExpense()">📝 存入帳單</button>
+                <input type="number" id="expAmt" class="wallet-input" placeholder="港幣 (HKD)">
+                <button class="btn-wallet-add" onclick="addExpense()">📝 存入帳單</button>
             </div>
             <div id="expenseHistory"></div>
             <div class="timeline-card" style="text-align: right; border-left-color: #D32F2F;"><strong>總花費約：NT$ <span id="totalTwd">0</span></strong></div>
         </div>
     </div>
 
-    <div id="overlay"><img id="overlay-img" class="big-stamp-anim" src=""></div>
-    <audio id="stampSfx" src="https://assets.mixkit.co/active_storage/sfx/2041/2041-preview.mp3" preload="auto"></audio>
-
     <script>
-        let stamps = JSON.parse(localStorage.getItem('hk_v6_stamps')) || [];
-        let expenses = JSON.parse(localStorage.getItem('hk_v6_wallet')) || [];
-        const STAMP_FILES = ["fantasy castle.png", "horse.png", "cable car.png", "ocean park.png", "shopping.png", "cookie.png", "airplane.png", "hidden_master.png"];
+        let expenses = JSON.parse(localStorage.getItem('hk_final_wallet')) || [];
 
         function switchTab(idx) {
             document.querySelectorAll('.day-section').forEach(s => s.classList.remove('active'));
@@ -320,38 +271,12 @@
             window.scrollTo(0, 0);
         }
 
-        function handleStamp(idx) {
-            const sfx = document.getElementById('stampSfx');
-            const overlay = document.getElementById('overlay');
-            const img = document.getElementById('overlay-img');
-            img.src = STAMP_FILES[idx];
-            overlay.style.display = 'flex';
-            setTimeout(() => img.classList.add('active'), 50);
-            sfx.currentTime = 0; sfx.play().catch(e => {});
-
-            setTimeout(() => {
-                overlay.style.display = 'none';
-                img.classList.remove('active');
-                if (!stamps.includes(idx)) {
-                    stamps.push(idx);
-                    localStorage.setItem('hk_v6_stamps', JSON.stringify(stamps));
-                    renderStamps();
-                }
-                switchTab(5); 
-            }, 850);
-        }
-
-        function renderStamps() {
-            const slots = document.querySelectorAll('.stamp-slot');
-            stamps.forEach(idx => { if(slots[idx]) slots[idx].classList.add('got'); });
-        }
-
         function addExpense() {
             const name = document.getElementById('expName').value;
             const amt = document.getElementById('expAmt').value;
             if(!name || !amt) return alert('請填寫完整資訊');
             expenses.push({ name, hkd: parseFloat(amt) });
-            localStorage.setItem('hk_v6_wallet', JSON.stringify(expenses));
+            localStorage.setItem('hk_final_wallet', JSON.stringify(expenses));
             document.getElementById('expName').value = ''; document.getElementById('expAmt').value = '';
             renderExpenses();
         }
@@ -366,7 +291,7 @@
             document.getElementById('totalTwd').innerText = total.toLocaleString();
         }
 
-        renderStamps(); renderExpenses();
+        renderExpenses();
     </script>
 </body>
 </html>
